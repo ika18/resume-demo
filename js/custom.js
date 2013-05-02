@@ -12,8 +12,48 @@ $(".container").sortable({
         ui.item.removeClass('moving');  
     }
 });
+var caretOffset;
+// clear format on paste
+$(document).on('paste', '[contenteditable]', function (e) {
+    console.log(e);
+    // e.preventDefault();
+    var $me = $(this);
+    var plainText = e.originalEvent.clipboardData.getData('Text');
+    var orgHTML = $me.html();
 
+    $me.html(orgHTML.substring(0, caretOffset - 1) + plainText + orgHTML.(caretOffset, orgHTML.length - 1));
+}).on('click', '[contenteditable]', function (e) {
+    caretOffset = getCaretCharacterOffsetWithin($(this)[0]);
+});
 
+function getCaretCharacterOffsetWithin(element) {
+    var caretOffset = 0;
+    if (typeof window.getSelection != "undefined") {
+        var range = window.getSelection().getRangeAt(0);
+        var preCaretRange = range.cloneRange();
+        preCaretRange.selectNodeContents(element);
+        preCaretRange.setEnd(range.endContainer, range.endOffset);
+        caretOffset = preCaretRange.toString().length;
+    } else if (typeof document.selection != "undefined" && document.selection.type != "Control") {
+        var textRange = document.selection.createRange();
+        var preCaretTextRange = document.body.createTextRange();
+        preCaretTextRange.moveToElementText(element);
+        preCaretTextRange.setEndPoint("EndToEnd", textRange);
+        caretOffset = preCaretTextRange.text.length;
+    }
+    return caretOffset;
+}
+
+// function showCaretPos() {
+//     var el = document.getElementById("test");
+//     var caretPosEl = document.getElementById("caretPos");
+//     caretPosEl.innerHTML = "Caret position: " + getCaretCharacterOffsetWithin(el);
+// }
+
+// document.body.onkeyup = showCaretPos;
+// document.body.onmouseup = showCaretPos;
+
+// Methods
 var methods = {
     list: function ($root) {
         $root.html('<ul><li>new item</li><li>new item</li><ul>');

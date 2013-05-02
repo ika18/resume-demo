@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+    function handlepaste (elem, e) {
+        e.preventDefault();
+        var orgText = elem.innerHTML;
+        var text = e.clipboardData.getData('Text');
+
+        elem.innerHTML = orgText + text;
+    }
+    </script>
+</head>
+<body>
+    <div id='div' contenteditable='true' onpaste='handlepaste(this, event)'>
+        <ul>
+            <li>sadh</li>
+        </ul>
+    </div>
+</body>
+</html>
