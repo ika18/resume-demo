@@ -1,0 +1,35 @@
+section {
+    margin: 40px 0;
+    h4:hover {
+        cursor: move;
+    }
+
+    &.moving {
+        background-color: #666;
+        .opacity(50);
+        border: 1px solid #ededed;
+        * {
+            visibility: hidden;
+        }
+    }
+
+    &.sortable-placeholder {
+        border: 2px dashed #ededed;
+        background-color: #f7f7f9;
+    }
+}
+
+
+[contenteditable] {
+    &:focus {
+        background-color: #fdffe6;
+        outline: none;
+        .box-shadow(0 0 3px #999);
+    }
+}
+
+td[contenteditable] {
+    &:focus {
+        .box-shadow(none);
+    }
+}
