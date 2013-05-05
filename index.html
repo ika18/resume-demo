@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
 
     <link rel="stylesheet/less" type="text/css" href="css/main.less">
-    <style media="print">
-    .atcion-btns {
-        display: none;
-    }
-    </style>
+    <link rel="stylesheet" href="css/print.css" media="print">
     <script src="js/lib/less-1.3.3.min.js"></script>
     <script>
         var less = less||{};
@@ -19,160 +15,213 @@
     <title>Resume</title>
 </head>
 <body>
-    <header></header>
-    <div class="container">
-        <h2 class="text-center">CONFIDENTIAL CANDIDATE REPORT</h2>
 
-        <section>
-            <h4>CLIENT INFORMATION:</h4>
-            <div class="row">
-                <div class="span2" contenteditable="true">Name:</div>
-                <div class="span10" contenteditable="true">MSD China</div>
-                <div class="span2" contenteditable="true">Position:</div>
-                <div class="span10" contenteditable="true">IT Director of China Region</div>
-            </div>
-            <div class="clearfix atcion-btns">
-                <button class="btn pull-right" onclick="addNew(this, 'pair');">Add</button>
-            </div>
-            
-        </section>
+    <div class="">
+        <div class="page-outer">
+            <div class="page-inner">
+                <header class="page-print-block"></header>
 
-        <section>
-            <h4>PERSONAL INFORMATION:</h4>
-            <div class="row">
-                <div class="span2" contenteditable="true">Name:</div>
-                <div class="span10" contenteditable="true">Frank LIN 林一峰</div>
-                <div class="span2" contenteditable="true">Date of Birth:</div>
-                <div class="span10" contenteditable="true">1975/12</div>
-                <div class="span2" contenteditable="true">Gender:</div>
-                <div class="span10" contenteditable="true">Male</div>
-                <div class="span2" contenteditable="true">Nationality:</div>
-                <div class="span10" contenteditable="true">China</div>
-                <div class="span2" contenteditable="true">Resides:</div>
-                <div class="span10" contenteditable="true">Shanghai</div>
-                <div class="span2" contenteditable="true">Language:</div>
-                <div class="span10" contenteditable="true">Fluent English, Mandarin and Cantonese  </div>
-                <div class="span2" contenteditable="true">Marriage Status:</div>
-                <div class="span10" contenteditable="true">Married</div>
-            </div>
-            <div class="clearfix atcion-btns">
-                <button class="btn pull-right" onclick="addNew(this, 'pair');">Add</button>
-            </div>
-        </section>
+                <div class="page-content">
 
-        <section>
-            <h4>EDUCATION:</h4>
-            <div class="row">
-                <div class="span2" contenteditable="true">1995/09 - 1999/07</div>
-                <div class="span10" contenteditable="true">
-                    Shanghai Jiao Tong University<br>
-                    Bachelor degree with major in Business and Finance English
+                    <h1 class="text-center" contenteditable="true">CONFIDENTIAL CANDIDATE REPORT</h1>
+    
+                    <section>
+                        <div class="clearfix atcion-btns">
+                            <button class="btn pull-right" onclick="addNew(this, 'pair');">Add</button>
+                        </div>
+                        <h2>CLIENT INFORMATION:</h2>
+
+                        <div class="row-fluid item">
+                            <div class="span4" contenteditable="true">Name:</div>
+                            <div class="span8" contenteditable="true">MSD China</div>
+                            <a href="#" class="item-remove"><span class="icon-remove"></span></a>
+                        </div>
+                        <div class="row-fluid item">
+                            <div class="span4" contenteditable="true">Position:</div>
+                            <div class="span8" contenteditable="true">IT Director of China Region</div>
+                            <a href="#" class="item-remove"><span class="icon-remove"></span></a>
+                        </div>
+                        
+                    </section>
+
+                    <section>
+                        <div class="clearfix atcion-btns">
+                            <button class="btn pull-right" onclick="addNew(this, 'pair');">Add</button>
+                        </div>
+                        <h2>PERSONAL INFORMATION:</h2>
+                        <div class="row-fluid item">
+                            <div class="span4" contenteditable="true">Name:</div>
+                            <div class="span8" contenteditable="true">Frank LIN 林一峰</div>
+                            <a href="#" class="item-remove"><span class="icon-remove"></span></a>
+                        </div>
+                        <div class="row-fluid item">
+                            <div class="span4" contenteditable="true">Date of Birth:</div>
+                            <div class="span8" contenteditable="true">1975/12</div>
+                            <a href="#" class="item-remove"><span class="icon-remove"></span></a>
+                        </div>
+                        <div class="row-fluid item">
+                            <div class="span4" contenteditable="true">Gender:</div>
+                            <div class="span8" contenteditable="true">Male</div>
+                            <a href="#" class="item-remove"><span class="icon-remove"></span></a>
+                        </div>
+                        <div class="row-fluid item">
+                            <div class="span4" contenteditable="true">Nationality:</div>
+                            <div class="span8" contenteditable="true">China</div>
+                            <a href="#" class="item-remove"><span class="icon-remove"></span></a>
+                        </div>
+                        <div class="row-fluid item">
+                            <div class="span4" contenteditable="true">Resides:</div>
+                            <div class="span8" contenteditable="true">Shanghai</div>
+                            <a href="#" class="item-remove"><span class="icon-remove"></span></a>
+                        </div>
+                        <div class="row-fluid item">
+                            <div class="span4" contenteditable="true">Language:</div>
+                            <div class="span8" contenteditable="true">Fluent English, Mandarin and Cantonese  </div>
+                            <a href="#" class="item-remove"><span class="icon-remove"></span></a>
+                        </div>
+                        <div class="row-fluid item">
+                            <div class="span4" contenteditable="true">Marriage Status:</div>
+                            <div class="span8" contenteditable="true">Married</div>
+                            <a href="#" class="item-remove"><span class="icon-remove"></span></a>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="clearfix atcion-btns">
+                            <button class="btn pull-right" onclick="addNew(this, 'pair');">Add</button>
+                        </div>
+                        <h2>EDUCATION:</h2>
+                        <div class="row-fluid item">
+                            <div class="span4" contenteditable="true">1995/09 - 1999/07</div>
+                            <div class="span8" contenteditable="true">
+                                Shanghai Jiao Tong University<br>
+                                Bachelor degree with major in Business and Finance English
+                            </div>
+                            <a href="#" class="item-remove"><span class="icon-remove"></span></a>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="clearfix atcion-btns">
+                            <button class="btn pull-right" onclick="addNew(this, 'pair');">Add</button>
+                        </div>
+                        <h2>TRAINING:</h2>
+                        <div class="row-fluid item">
+                            <div class="span4" contenteditable="true">2004/08</div>
+                            <div class="span8" contenteditable="true">"Six Sigma" Green Belt Training</div>
+                            <a href="#" class="item-remove"><span class="icon-remove"></span></a>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="clearfix atcion-btns">
+                            <button class="btn pull-right" onclick="reset(this, 'list');">Reset</button>
+                        </div>
+                        <h2>CERTIFICATES:</h2>
+                        <div class="row-fluid">
+                            <div class="span12" contenteditable="true">
+                                <ul>
+                                    <li>Project Management Professional (PMP), </li>
+                                    <li>Certified Information System Auditor (CISA), </li>
+                                    <li>Six Sigma (Green Belt), </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="clearfix atcion-btns">
+                            <button class="btn pull-right" onclick="reset(this, 'list');">Reset</button>
+                        </div>
+                        <h2>EVALUATION &amp; COMMENTS:</h2>
+                        <div class="row-fluid">
+                            <div contenteditable="true">
+                                <ul>
+                                    <li>10+ years experience in IT area. 10 years experience as IS manager/leader in Top 500 Companies</li>
+                                    <li>Develop organization and empower people.</li>
+                                    <li>Experience in leading partners/vendors in China and Asia Pac.</li>
+                                    <li>Responsible for ~30M RMB budget and spend in IS projects and operations annually</li>
+                                    <li>Experience in Sales &amp; Marketing, Ecommerce, ERP and Finance, HR, Purchasing IS solutions and innovations.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="clearfix atcion-btns">
+                            <button class="btn pull-right" onclick="addNew(this, 'row');">Add</button>
+                        </div>
+                        <h2>EMPLOYMENT HISTORY:</h2>
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <table class="table table-bordered">
+                                    <colgroup>
+                                        <col width="33%">
+                                        <col width="33%">
+                                        <col width="33%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr class="info">
+                                            <th>
+                                                <div class="text-center">Employment Period</div>
+                                            </th>
+                                            <th>
+                                                <div class="text-center">Employer</div>
+                                            </th>
+                                            <th>
+                                                <div class="text-center">Position Held</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="item">
+                                            <td contenteditable="true">
+                                                <a href="#" class="item-remove"><span class="icon-remove"></span></a>
+                                                2008/02 – Present
+                                            </td>
+                                            <td contenteditable="true">
+                                                <a href="#" class="item-remove"><span class="icon-remove"></span></a>
+                                                Eli Lilly China
+                                            </td>
+                                            <td contenteditable="true">IT Manager - Business Integration</td>
+                                        </tr>
+                                        <tr class="item">
+                                            <td contenteditable="true">
+                                                <a href="#" class="item-remove"><span class="icon-remove"></span></a>
+                                                2005/01 – 2008/01
+                                            </td>
+                                            <td contenteditable="true">AstraZeneca China</td>
+                                            <td contenteditable="true">IS Application Manager</td>
+                                        </tr>
+                                        <tr class="item">
+                                            <td contenteditable="true">
+                                                <a href="#" class="item-remove"><span class="icon-remove"></span></a>
+                                                2001/05 – 2004/12
+                                            </td>
+                                            <td contenteditable="true">General Electric</td>
+                                            <td contenteditable="true">Pacific IT Leader</td>
+                                        </tr>
+                                        <tr class="item">
+                                            <td contenteditable="true">
+                                                <a href="#" class="item-remove"><span class="icon-remove"></span></a>
+                                                1998/02 – 2001/04
+                                            </td>
+                                            <td contenteditable="true">Ford Financial China</td>
+                                            <td contenteditable="true">System Analyst, Global Information Services</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+
                 </div>
-            </div>
-            <div class="clearfix atcion-btns">
-                <button class="btn pull-right" onclick="addNew(this, 'pair');">Add</button>
-            </div>
-        </section>
 
-        <section>
-            <h4>TRAINING:</h4>
-            <div class="row">
-                <div class="span2" contenteditable="true">2004/08</div>
-                <div class="span10" contenteditable="true">"Six Sigma" Green Belt Training</div>
+                <footer class="page-print-block"></footer>
             </div>
-            <div class="clearfix atcion-btns">
-                <button class="btn pull-right" onclick="addNew(this, 'pair');">Add</button>
-            </div>
-        </section>
-
-        <section>
-            <h4>CERTIFICATES:</h4>
-            <div class="row">
-                <div class="span12" contenteditable="true">
-                    <ul>
-                        <li>Project Management Professional (PMP), </li>
-                        <li>Certified Information System Auditor (CISA), </li>
-                        <li>Six Sigma (Green Belt), </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="clearfix atcion-btns">
-                <button class="btn pull-right" onclick="reset(this, 'list');">Reset</button>
-            </div>
-        </section>
+        </div>
         
-        <section>
-            <h4>EVALUATION &amp; COMMENTS:</h4>
-            <div class="row">
-                <div class="span12" contenteditable="true">
-                    <ul>
-                        <li>10+ years experience in IT area. 10 years experience as IS manager/leader in Top 500 Companies</li>
-                        <li>Develop organization and empower people.</li>
-                        <li>Experience in leading partners/vendors in China and Asia Pac.</li>
-                        <li>Responsible for ~30M RMB budget and spend in IS projects and operations annually</li>
-                        <li>Experience in Sales &amp; Marketing, Ecommerce, ERP and Finance, HR, Purchasing IS solutions and innovations.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="clearfix atcion-btns">
-                <button class="btn pull-right" onclick="reset(this, 'list');">Reset</button>
-            </div>
-        </section>
-
-        <section>
-            <h4>EMPLOYMENT HISTORY:</h4>
-            <div class="row">
-                <div class="span12">
-                    <table class="table table-bordered">
-                        <colgroup>
-                            <col width="33%">
-                            <col width="33%">
-                            <col width="33%">
-                        </colgroup>
-                        <thead>
-                            <tr class="info">
-                                <th>
-                                    <div class="text-center">Employment Period</div>
-                                </th>
-                                <th>
-                                    <div class="text-center">Employer</div>
-                                </th>
-                                <th>
-                                    <div class="text-center">Position Held</div>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td contenteditable="true">2008/02 – Present</td>
-                                <td contenteditable="true">Eli Lilly China</td>
-                                <td contenteditable="true">IT Manager - Business Integration</td>
-                            </tr>
-                            <tr>
-                                <td contenteditable="true">2005/01 – 2008/01</td>
-                                <td contenteditable="true">AstraZeneca China</td>
-                                <td contenteditable="true">IS Application Manager</td>
-                            </tr>
-                            <tr>
-                                <td contenteditable="true">2001/05 – 2004/12</td>
-                                <td contenteditable="true">General Electric</td>
-                                <td contenteditable="true">Pacific IT Leader</td>
-                            </tr>
-                            <tr>
-                                <td contenteditable="true">1998/02 – 2001/04</td>
-                                <td contenteditable="true">Ford Financial China</td>
-                                <td contenteditable="true">System Analyst, Global Information Services</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="clearfix atcion-btns">
-                <button class="btn pull-right" onclick="addNew(this, 'row');">Add</button>
-            </div>
-        </section>
     </div>
-    <footer></footer>
 
     <script src="js/custom.js"></script>
 </body>

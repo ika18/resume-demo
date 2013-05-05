@@ -1,0 +1,8 @@
+.page-outer {
+    border: none;
+    .box-shadow(none);
+}
+
+.page-content section:hover .atcion-btns {
+    display: none;
+}

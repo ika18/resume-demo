@@ -1,35 +1,97 @@
-section {
-    margin: 40px 0;
-    h4:hover {
-        cursor: move;
+body {
+    background-color: #ebebeb;
+}
+.page-outer {
+    background-color: #fff;
+    border: 1px solid #cacaca;
+    width: 818px;
+    margin: 16px auto;
+    .box-shadow(0 0 4px rgba(0,0,0,0.1));
+}
+.page-inner {
+    width: 816px;
+    min-height: 1056px;
+}
+.page-content {
+    padding: 0 96px;
+}
+.page-print-block {
+    height: 96px;
+}
+
+.page-content {
+    h1 {
+        font-size: 28px;
+    }
+    h2 {
+        font-size: 21px;
     }
 
-    &.moving {
-        background-color: #666;
-        .opacity(50);
-        border: 1px solid #ededed;
-        * {
-            visibility: hidden;
+    section {
+        margin: 40px 0;
+        position: relative;
+
+        h2:hover {
+            cursor: move;
+        }
+
+        &.moving {
+            background-color: #666;
+            .opacity(50);
+            border: 1px solid #ededed;
+            * {
+                visibility: hidden;
+            }
+        }
+
+        &.sortable-placeholder {
+            border: 2px dashed #ededed;
+            background-color: #f7f7f9;
+        }
+
+        .atcion-btns {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        &:hover .atcion-btns {
+            display: block;
+        }
+
+        .item {
+            position: relative;
+            .item-remove {
+                position: absolute;
+                display: none;
+                right: 0;
+            }
+
+            &:hover .item-remove {
+                display: block;
+            }
+        }
+
+        tr.item {
+            .item-remove {
+                left: -20px;
+            }
         }
     }
 
-    &.sortable-placeholder {
-        border: 2px dashed #ededed;
-        background-color: #f7f7f9;
-    }
-}
 
-
-[contenteditable] {
-    &:focus {
-        background-color: #fdffe6;
-        outline: none;
-        .box-shadow(0 0 3px #999);
+    [contenteditable] {
+        &:focus {
+            background-color: #fdffe6;
+            outline: none;
+            .box-shadow(0 0 3px #999);
+        }
     }
-}
 
-td[contenteditable] {
-    &:focus {
-        .box-shadow(none);
+    td[contenteditable] {
+        &:focus {
+            .box-shadow(none);
+        }
     }
+
 }
