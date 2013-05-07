@@ -24,9 +24,10 @@ define(['jquery',
     function onRendered(deferred) {
         var me = this;
         // Sort section
-        $(".page-content").sortable({
+        $(".sortable-container").sortable({
             cursor: "move",
             placeholder: "sortable-placeholder",
+            containment: "parent",
             forcePlaceholderSize: true,
             handle: "h2",
             axis: "y",
@@ -39,7 +40,7 @@ define(['jquery',
         });
 
         $('.options').sortable({
-            connectWith: ".page-content",
+            connectWith: ".sortable-container",
             helper: "clone"
         });
 
