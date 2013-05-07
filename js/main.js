@@ -1,8 +1,8 @@
 require.config({
     paths: {
-        'troopjs-bundle': '../lib/troopjs/1.0.9-8/troopjs-bundle.min',
-        'jquery': '../lib/jquery-1.9.1.min',
-        'jquery.ui': '../lib/jqueryui/jquery-ui.min'
+        'troopjs-bundle': 'lib/troopjs/1.0.9-2/troopjs-bundle',
+        'jquery': 'lib/jquery-1.7.2.min',
+        'jquery.ui': 'lib/jqueryui/jquery-ui.min'
     },
     shim: {
         'jquery.ui': ['jquery']
@@ -20,13 +20,14 @@ require(['require',
     'troopjs-bundle'], function (require, $) {
     'use strict';
 
-    require(['widget/application',
+    require(["app/widget/application",
         "troopjs-jquery/weave",
         "troopjs-jquery/destroy",
+        "troopjs-jquery/hashchange",
         "troopjs-jquery/action"], function (Application) {
 
         $(document).ready(function () {
-            (Application()).start();
+            Application($(this), "demo").start();
         });
 
     });
