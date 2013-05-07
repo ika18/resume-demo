@@ -19,6 +19,20 @@ body {
     height: 96px;
 }
 
+.moving {
+    background-color: #666;
+    .opacity(50);
+    border: 1px solid #ededed;
+    * {
+        visibility: hidden;
+    }
+}
+
+.sortable-placeholder {
+    border: 2px dashed #ededed;
+    background-color: #f7f7f9;
+}
+
 .page-content {
     h1 {
         font-size: 28px;
@@ -35,19 +49,7 @@ body {
             cursor: move;
         }
 
-        &.moving {
-            background-color: #666;
-            .opacity(50);
-            border: 1px solid #ededed;
-            * {
-                visibility: hidden;
-            }
-        }
-
-        &.sortable-placeholder {
-            border: 2px dashed #ededed;
-            background-color: #f7f7f9;
-        }
+        
 
         .atcion-btns {
             display: none;
@@ -61,22 +63,20 @@ body {
 
         .item {
             position: relative;
-            .item-remove {
+
+            .remove {
                 position: absolute;
+                left: 0;
+                top: 0;
                 display: none;
-                right: 0;
             }
 
-            &:hover .item-remove {
+            &:hover .remove {
                 display: block;
-            }
+            };
         }
 
-        tr.item {
-            .item-remove {
-                left: -20px;
-            }
-        }
+
     }
 
 

@@ -13,6 +13,19 @@ $(".page-content").sortable({
     }
 });
 
+$('.sortable-items').sortable({
+    cursor: "move",
+    placeholder: "sortable-placeholder",
+    forcePlaceholderSize: true,
+    axis: "y",
+    start: function (e, ui) {
+        ui.item.addClass('moving');
+    },
+    stop: function (e, ui) {
+        ui.item.removeClass('moving');  
+    }
+});
+
 // Methods
 var methods = {
     list: function ($root) {
@@ -39,9 +52,11 @@ function addNew(el, type) {
     methods[type](el);
 }
 
-
-$('section').on('click', '.item-remove', function (e) {
+$('.page-content').on('click', '.remove', function (e) {
     e.preventDefault();
-    var $row = $(e.target).closest('.item');
-    $row.remove();
+    var $target = $(e.target);
+    $target.closest('.item').remove();
 });
+
+
+
