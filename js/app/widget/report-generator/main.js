@@ -2,29 +2,49 @@ define(['jquery',
     'troopjs-core/component/widget',
     'troopjs-utils/deferred',
     'template!./main.html',
-    'template!app/widget/report-generator/fields/pair.html',
-    'template!app/widget/report-generator/fields/list.html',
-    'template!app/widget/report-generator/fields/experience.html',
-    'jquery.ui'], function ($, Widget, tDeferred, template, pairTemplate, listTemplate, expTemplate) {
+    'jquery.ui'], function ($, Widget, tDeferred, template) {
     'use strict';
 
-    var FIELDS = {
-        pair: pairTemplate(),
-        list: listTemplate(),
-        exp: expTemplate()
-    };
+    function initialContent() {
+        var me = this;
+        var content = me._json.content;
+        var i = 0;
+        var l = content.length;
+        var weave;
+        var $li;
+        var type;
 
+        for (i; i < l; i++) {
+            type = content[i].type.replace(' ', '-').toLowerCase();
+            weave = 'app/widget/report-generator/content-block/' + type + '/main(json)';
+
+            $li = $('<li></li>').data('json', content[i].content)
+                .attr('data-weave', weave);
+
+            me.$sortable.append($li);
+            $li.weave();
+        }
+    }
 
     function render(deferred) {
         var me = this;
 
-        me.html(template, deferred);
+        $.get('mock/resume.json').done(function (res) {
+            me._json = res;
+            me.html(template, me._json, deferred);
+        });
     }
 
     function onRendered(deferred) {
         var me = this;
+
+        me.$sortable = me.$element.find(".sortable-container");
+        me.$options = me.$element.find('.options');
+
+        initialContent.call(me);
+
         // Sort section
-        $(".sortable-container").sortable({
+        me.$sortable.sortable({
             cursor: "move",
             placeholder: "sortable-placeholder",
             containment: me.$element.find('.page-inner'),
@@ -39,8 +59,18 @@ define(['jquery',
             },
             update: function (e, ui) {
                 var $item = ui.item;
+                var type = $item.attr('data-type');
 
-                console.log($item.html('change'));
+                if (type) {
+                    var json = (function () {
+                        return me._json.content.filter(function (obj) {
+                            return obj.type === type.replace('-', ' ');
+                        })[0].content;
+                    }());
+                    var weave = 'app/widget/report-generator/content-block/' + type + '/main(json)';
+                    $item.data('json', json)
+                        .attr('data-weave', weave).weave();
+                }
             }
         });
 
@@ -48,10 +78,6 @@ define(['jquery',
             connectToSortable: ".sortable-container",
             helper: 'clone',
             revert: "invalid",
-            stop: function (e, ui) {
-
-                // console.log(ui.removeClass('').removeAttr('style'));
-            }
         });
 
         $('.sortable-items').sortable({
@@ -77,28 +103,18 @@ define(['jquery',
         'sig/start': function (singal, deferred) {
             onRendered.call(this, deferred);
         },
-        "dom/action.click": $.noop,
-        "dom/action/item/remove.click": function (topic, $e) {
-            $e.preventDefault();
+        'hub:memory/report-generator/disable/draggable': function (topic, type) {
             var me = this;
-            var $target = $($e.target);
-
-            $target.closest('.item').remove();
+            if (type) {
+                me.$options.find('[data-type="' + type + '"]').addClass('disabled').draggable('disable');
+            }
         },
-        'dom/action/item/add.click': function (topic, $e, type) {
-            $e.preventDefault();
+        'hub:memory/report-generator/enable/draggable': function (topic, type) {
             var me = this;
-            var $target = $($e.target);
-            var $container = (function () {
-                var $section = $target.closest('section');
-                if ($section.hasClass('item-container')) {
-                    return $section;
-                } else {
-                    return $section.find('.item-container');
-                }
-            }());
-
-            $container.append(FIELDS[type]);
-        }
+            if (type) {
+                me.$options.find('[data-type="' + type + '"]').removeClass('disabled').draggable('enable');
+            }
+            
+        },
     });
 });

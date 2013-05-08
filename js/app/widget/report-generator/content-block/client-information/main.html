@@ -1,0 +1,15 @@
+<div class="content-block item-container">
+    <div class="clearfix atcion-btns">
+        <button class="btn btn-small btn-danger pull-right" data-action="block/remove">Remove</button>
+        <button class="btn btn-small pull-right" data-action="item/add('pair')">Add</button>
+    </div>
+    <h2>CLIENT INFORMATION:</h2>
+    <% for (var i = 0, l = data.length; i < l; i++) { %>
+    <% var d = data[i]; %>
+    <div class="row item">
+        <a href="#" data-action="item/remove" class="remove"><span class="icon-remove"></span></a>
+        <div class="span2" contenteditable="true"><%= d.type %>:</div>
+        <div class="span6" contenteditable="true"><%= d.txt %></div>
+    </div>
+    <% } %>
+</div>

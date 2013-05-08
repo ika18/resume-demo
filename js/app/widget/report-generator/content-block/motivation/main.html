@@ -1,0 +1,17 @@
+<div class="content-block item-container">
+    <div class="clearfix atcion-btns">
+        <button class="btn btn-small btn-danger pull-right" data-action="block/remove">Remove</button>
+        <button class="btn btn-small pull-right" data-action="item/add('pair')">Add</button>
+    </div>
+    <h2>MOTIVATION:</h2>
+    <div class="row">
+        <div class="span8">
+            <ul class="item-container">
+                <% for (var i = 0, l = data.length; i < l; i++) { %>
+                <% var d = data[i]; %>
+                <li><%= d; %></li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</div>

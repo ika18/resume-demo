@@ -41,25 +41,35 @@ body {
         font-size: 21px;
     }
 
+    .sortable-container {
+        min-height: 40px;
+    }
+
     li.sortable-placeholder {
         min-height: 30px !important;
     }
 
     .content-block {
         margin: 40px 0;
-        // position: relative;
+        position: relative;
 
         h2:hover {
             cursor: move;
+            text-transform:uppercase;
         }
 
+        li {
+            list-style-type: disc;
+        }
         
-
         .atcion-btns {
             display: none;
             position: absolute;
             right: 0;
             top: 0;
+            button {
+                margin-left: 5px;
+            }
         }
         &:hover .atcion-btns {
             display: block;
@@ -93,19 +103,23 @@ header {
     z-index: 10;
 
     .options {
-        margin: 15px 0;
         li {
             // border: 1px solid ;
-            background-color: #bbd8e9;
+            background-color: #6BB5E7;
             line-height: 30px;
             padding: 0 10px;
-            margin-right: 10px;
+            margin: 15px 10px 0 0;
             color: white;
             display: inline-block !important;
+            height: 30px !important;
         }
 
         li.ui-draggable-dragging {
             .box-shadow(1px 1px 4px #bbb);
+        }
+
+        li.disabled {
+            .opacity(50);
         }
     }
 }

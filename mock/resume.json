@@ -1,0 +1,150 @@
+{
+    "header": {
+        "left": {
+            "txt": "xxxxx"
+        },
+        "center": null,
+        "right": {
+            "img": "url"
+        }
+    },
+
+    "footer": {
+        "left": null,
+        "center": {
+            "txt": "xxxx"
+        },
+        "right": null
+    },
+
+    "title": "CONFIDENTIAL CANDIDATE REPORT",
+    "filename": "xxxxx",
+
+    "content": [
+        {
+            "type": "client information",
+            "content": [
+                {
+                    "type": "Name",
+                    "txt": "MSD China"
+                },
+                {
+                    "type": "Position",
+                    "txt": "IT Director of China Region"
+                }
+            ]
+        }, {
+            "type": "personal information",
+            "content": [
+                {
+                    "type": "Name",
+                    "txt": "Andrew CHEN 陈一林"
+                },
+                {
+                    "type": "Date of Birth",
+                    "txt": "1975/12"
+                },
+                {
+                    "type": "Gender",
+                    "txt": "Male"
+                },
+                {
+                    "type": "Nationality",
+                    "txt": "China"
+                },
+                {
+                    "type": "Resides",
+                    "txt": "Shanghai"
+                },
+                {
+                    "type": "Language",
+                    "txt": "Fluent English, Mandarin and Cantonese"
+                },
+                {
+                    "type": "Marriage Status",
+                    "txt": "Married"
+                }
+            ]
+        }, {
+            "type": "education",
+            "content": [
+                {
+                    "from": "1995/09",
+                    "to": "1999/07",
+                    "school": "Shanghai Jiao Tong University",
+                    "specialized": "Bachelor degree with major in Business and Finance English"
+                }
+            ]
+        }, {
+            "type": "training",
+            "content": [{
+                "date": "2004/08",
+                "txt": "\"Six Sigma\" Green Belt Training"
+            }]
+        }, {
+            "type": "certificates",
+            "content": [
+                "Project Management Professional (PMP)",
+                "Certified Information System Auditor (CISA)",
+                "Six Sigma (Green Belt)"
+            ]
+        }, {
+            "type": "evaluation comments",
+            "content": [
+                "10+ years experience in IT area. 10 years experience as IS manager/leader in Top 500 Companies",
+                "Develop organization and empower people",
+                "Experience in leading partners/vendors in China and Asia Pac",
+                "Responsible for ~30M RMB budget and spend in IS projects and operations annually",
+                "Experience in Sales & Marketing, Ecommerce, ERP and Finance, HR, Purchasing IS solutions and innovations"
+            ]
+        }, {
+            "type": "employment history",
+            "content": true
+        }, {
+            "type": "Professional experience",
+            "content": [
+                {
+                    "from": "2008/02",
+                    "to": "Present",
+                    "company": "Eli Lilly China",
+                    "title": "IT Manager - Business Integration",
+                    "description": "<ul><li>Major applications include: ERP, CRM, BI/DW, T&amp;E, SharePoint, eApproval, HR systems, Product websites, and SMS/MMS platform.</li><li>Major projects include: iPad rollout to ~4000 sales with interactive detailing and sales automation applications, Digital Marketing/Multi-channel, Sales Call Center, Veeva CRM, Sales FORECAST, and Distributor Data Integration Reporting.</li><li>Lead the team working on AstraZeneca Global/Regional initiatives, e.g. Global Travel &amps; Expense Management system, Global HR system, Global Digital Sales and Marketing capabilities.</li></ul>"
+                }, {
+                    "from": "2005/01",
+                    "to": "2008/01",
+                    "company": "AstraZeneca China",
+                    "title": "IS Application Manager",
+                    "description": ""
+                }, {
+                    "from": "2001/05",
+                    "to": "2004/12",
+                    "company": "General Electric",
+                    "title": "Pacific IT Leader",
+                    "description": ""
+                }, {
+                    "from": "1998/02",
+                    "to": "2001/04",
+                    "company": "Ford Financial China",
+                    "title": "System Analyst, Global Information Services",
+                    "description": ""
+                }
+            ]
+        }, {
+            "type": "compensation",
+            "content": {
+                "current": "xxxxxx",
+                "expectation": "xxxxxx"
+            }
+        }, {
+            "type": "motivation",
+            "content": [
+                "Seek for opportunity in new area"
+            ]
+        }, {
+            "type": "availability",
+            "content": [
+                "4 weeks after confirmation on Offer Letter"
+            ]
+        }
+    ]
+}
