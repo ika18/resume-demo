@@ -27,22 +27,32 @@ define(['jquery',
         $(".sortable-container").sortable({
             cursor: "move",
             placeholder: "sortable-placeholder",
-            containment: "parent",
-            forcePlaceholderSize: true,
-            handle: "h2",
+            containment: me.$element.find('.page-inner'),
+            // forcePlaceholderSize: true,
             axis: "y",
+            revert: true,
             start: function (e, ui) {
                 ui.item.addClass('moving');
             },
             stop: function (e, ui) {
-                ui.item.removeClass('moving');  
+                ui.item.removeClass('moving');
+            },
+            update: function (e, ui) {
+                var $item = ui.item;
+
+                console.log($item.html('change'));
             }
         });
 
-        $('.options').sortable({
-            connectWith: ".sortable-container",
-            helper: "clone"
-        });
+        $('.options li').draggable({
+            connectToSortable: ".sortable-container",
+            helper: 'clone',
+            revert: "invalid",
+            stop: function (e, ui) {
+
+                // console.log(ui.removeClass('').removeAttr('style'));
+            }
+        });
 
         $('.sortable-items').sortable({
             cursor: "move",

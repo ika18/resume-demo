@@ -41,9 +41,13 @@ body {
         font-size: 21px;
     }
 
-    section {
+    li.sortable-placeholder {
+        min-height: 30px !important;
+    }
+
+    .content-block {
         margin: 40px 0;
-        position: relative;
+        // position: relative;
 
         h2:hover {
             cursor: move;
@@ -76,22 +80,6 @@ body {
             };
         }
 
-
-    }
-
-
-    [contenteditable] {
-        &:focus {
-            background-color: #fdffe6;
-            outline: none;
-            .box-shadow(0 0 3px #999);
-        }
-    }
-
-    td[contenteditable] {
-        &:focus {
-            .box-shadow(none);
-        }
     }
 
 }
@@ -113,10 +101,11 @@ header {
             padding: 0 10px;
             margin-right: 10px;
             color: white;
+            display: inline-block !important;
         }
 
-        .ui-sortable-placeholder {
-            display: none;
+        li.ui-draggable-dragging {
+            .box-shadow(1px 1px 4px #bbb);
         }
     }
 }
