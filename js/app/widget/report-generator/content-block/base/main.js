@@ -28,6 +28,20 @@ define(['jquery',
             me.publish(HUB_DISABLE_DRAGGABLE, me._type);
             deferred.resolve();
         },
+        'sig/start': function (signal, deferred) {
+            var me = this;
+
+            me.$container = (function () {
+                var $root = me.$element;
+                if ($root.hasClass('item-container')) {
+                    return $root;
+                } else {
+                    return $root.find('.item-container');
+                }
+            }());
+            
+            deferred.resolve();
+        },
         'sig/finalize': function (signal, deferred) {
             var me = this;
 
@@ -62,16 +76,8 @@ define(['jquery',
             $e.preventDefault();
             var me = this;
             var $target = $($e.target);
-            var $container = (function () {
-                var $block = $target.closest('.content-block');
-                if ($block.hasClass('item-container')) {
-                    return $block;
-                } else {
-                    return $block.find('.item-container');
-                }
-            }());
 
-            $container.append(FIELDS[type]);
+            me.$container.append(FIELDS[type]);
         }
     });
 });

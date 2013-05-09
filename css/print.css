@@ -20,3 +20,8 @@ footer {
 .page-content .content-block:hover .atcion-btns {
     display: none;
 }
+
+.redactor_air,
+.redactor_dropdown {
+    display: none !important;
+}

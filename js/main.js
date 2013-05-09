@@ -2,10 +2,12 @@ require.config({
     paths: {
         'troopjs-bundle': 'lib/troopjs/1.0.9-2/troopjs-bundle',
         'jquery': 'lib/jquery-1.7.2.min',
-        'jquery.ui': 'lib/jqueryui/jquery-ui.min'
+        'jquery.ui': 'lib/jqueryui/jquery-ui.min',
+        'redactor': 'lib/redactor/8.2.6/redactor'
     },
     shim: {
-        'jquery.ui': ['jquery']
+        'jquery.ui': ['jquery'],
+        'redactor': ['jquery']
     },
     map: {
         '*': {
