@@ -101,16 +101,20 @@ define(['jquery',
                 var $item = ui.item;
                 var type = $item.attr('data-type');
                 var deferred = tDeferred();
+                var content = $.extend(true, [], me._originJson.content);
 
                 deferred.done(function () {
                     order.call(me);
                 });
 
                 if (type) {
+                    console.log(content);
                     var json = (function () {
-                        return me._originJson.content.filter(function (obj) {
+                        var items = content.filter(function (obj) {
                             return obj.type === type.replace('-', ' ');
-                        })[0].content;
+                        });
+
+                        return items[0].content;
                     }());
                     var weave = 'app/widget/report-generator/content-block/' + type + '/main(json)';
                     $item.data('json', json)
