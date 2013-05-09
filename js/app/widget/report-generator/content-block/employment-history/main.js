@@ -1,8 +1,9 @@
-define(['jquery',
+define(['compose',
+    'jquery',
     'app/widget/report-generator/content-block/base/main',
     'troopjs-utils/deferred',
     'template!./main.html',
-    'template!./row.html'], function ($, Widget, deferred, template, rowTemplate) {
+    'template!./row.html'], function (Compose, $, Widget, deferred, template, rowTemplate) {
     'use strict';
     function render(deferred) {
         var me = this;

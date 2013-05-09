@@ -19,6 +19,10 @@ define(['compose',
     }, {
         'sig/initialize': function (signal, deferred) {
             render.call(this, deferred);
+        },
+        'afterOperation': function (topic, event) {
+            var me = this;
+            me.publish(HUB_UPDATE_EMPLOYMENT_HISTORY, me._json);
         }
     });
 });

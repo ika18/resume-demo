@@ -26,7 +26,7 @@ define(['jquery',
         }
     }
 
-    function changeValue($e) {
+    function changeValue($e, key) {
         var me = this;
         var $target = $($e.target);
         var $root = $target.closest('[data-action="editable"]');
@@ -37,6 +37,8 @@ define(['jquery',
 
         $view.removeClass('hide');
         $root.find('.edit').addClass('hide');
+
+        me._json[key] = val;
     }
 
     function order() {
@@ -167,7 +169,7 @@ define(['jquery',
                 return obj.type !== type;
             });
         },
-        'dom/action.click.keyup': $.noop,
+        'dom/action.click.keyup.focusout': $.noop,
         'dom/action/editable.click': function (topic, $e) {
             var me = this;
             var $target = $($e.target);
@@ -177,10 +179,13 @@ define(['jquery',
             $view.addClass('hide');
             $input.focus().val($view.html());
         },
-        'dom/action/change/value.keyup': function (topic, $e) {
+        'dom/action/change/value.keyup': function (topic, $e, key) {
             if ($e.originalEvent.keyCode === 13) {
-                changeValue.call(this, $e);
+                changeValue.call(this, $e, key);
             }
+        },
+        'dom/action/change/value.focusout': function (topic, $e, key) {
+            changeValue.call(this, $e, key);
         },
         'dom/action/save.click': function (topic, $e) {
             console.log(this._json.content);

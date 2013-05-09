@@ -19,8 +19,8 @@ define(['jquery',
     };
 
     var REDACTOR_OPT = { 
-        // focus: true,
-        // air: true,
+        focus: true,
+        air: true,
         buttons: ['bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|', 'table', 'link', '|', 'alignment'],
         airButtons: ['bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|', 'table', 'link', '|', 'alignment']
     };
@@ -90,7 +90,7 @@ define(['jquery',
             me.publish(HUB_REMOVE_CONTENT, me._type.replace('-', ' '));
             deferred.resolve();
         },
-        "dom/action.click.keyup.change": $.noop,
+        "dom/action.click.keyup.focusout": $.noop,
         "dom/action/block/remove.click": function (topic, $e) {
             $e.preventDefault();
             var me = this;
@@ -116,6 +116,10 @@ define(['jquery',
                 me._json.splice(index, 1);
 
                 $target.closest('.item').remove();
+
+                if (me.afterOperation) {
+                    me.afterOperation(topic);
+                }
             }
             
         },
@@ -141,6 +145,19 @@ define(['jquery',
 
             if ($e.originalEvent.keyCode === 13) {
                 changeValue.call(me, $e, key);
+
+                if (me.afterOperation) {
+                    me.afterOperation(topic);
+                }
+            }
+        },
+        'dom/action/change/value.focusout': function (topic, $e, key) {
+            $e.stopPropagation();
+            var me = this;
+            changeValue.call(me, $e, key);
+
+            if (me.afterOperation) {
+                me.afterOperation(topic);
             }
         },
         'dom/action/redactor/edit.click': function (topic, $e) {
