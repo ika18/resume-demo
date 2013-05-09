@@ -40,8 +40,16 @@
                     </span>
                 </div>
             </div>
-            <div class="span8">
-                <textarea name="description"><%= d.description %></textarea>
+            <div class="span8 redactor-area">
+                <div class="text-right">
+                    <button class="btn btn-small redactor-edit-btn" data-action="redactor/edit">Edit</button>
+                    <button class="btn btn-small redactor-save-btn" data-action="redactor/save">Save</button>
+                    <!-- <button class="btn btn-small btn-danger redactor-cancel-btn" data-action="redactor/cancel">Cancel</button> -->
+                </div>
+                
+                <div class="redactor-content">
+                    <%= d.description %>
+                </div>
             </div>
         </div>
         <% } %>

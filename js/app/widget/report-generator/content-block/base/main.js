@@ -4,7 +4,8 @@ define(['jquery',
     'template!app/widget/report-generator/fields/pair.html',
     'template!app/widget/report-generator/fields/list.html',
     'template!app/widget/report-generator/fields/experience.html',
-    'template!app/widget/report-generator/fields/education.html'], function ($, Widget, tDeferred, pairTemplate, listTemplate, expTemplate, eduTemplate) {
+    'template!app/widget/report-generator/fields/education.html',
+    'redactor'], function ($, Widget, tDeferred, pairTemplate, listTemplate, expTemplate, eduTemplate) {
     'use strict';
     var HUB_DISABLE_DRAGGABLE = 'report-generator/disable/draggable';
     var HUB_ENABLE_DRAGGABLE = 'report-generator/enable/draggable';
@@ -15,6 +16,13 @@ define(['jquery',
         list: listTemplate(),
         exp: expTemplate(),
         education: eduTemplate()
+    };
+
+    var REDACTOR_OPT = { 
+        // focus: true,
+        // air: true,
+        buttons: ['bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|', 'table', 'link', '|', 'alignment'],
+        airButtons: ['bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|', 'table', 'link', '|', 'alignment']
     };
 
     function changeValue($e, key) {
@@ -118,6 +126,27 @@ define(['jquery',
             if ($e.originalEvent.keyCode === 13) {
                 changeValue.call(me, $e, key);
             }
+        },
+        'dom/action/redactor/edit.click': function (topic, $e) {
+            $e.preventDefault();
+            var me = this;
+            var $target = $($e.target);
+
+            $target.closest('.redactor-area').addClass('editing').find('.redactor-content').redactor(REDACTOR_OPT);
+        },
+        'dom/action/redactor/save.click': function (topic, $e) {
+            $e.preventDefault();
+            var me = this;
+            var $target = $($e.target);
+
+            $target.closest('.redactor-area').removeClass('editing').find('.redactor-content').destroyEditor();
+        },
+        'dom/action/redactor/cancel.click': function (topic, $e) {
+            $e.preventDefault();
+            var me = this;
+            var $target = $($e.target);
+
+            $target.closest('.redactor-area').removeClass('editing').find('.redactor-content').destroyEditor();
         }
     });
 });

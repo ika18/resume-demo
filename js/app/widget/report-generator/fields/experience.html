@@ -3,25 +3,40 @@
     <div class="span2">
         <span data-action="editable">
             <span class="view">From Date</span>
-            <span class="edit hide"><input type="text"></span>
+            <span class="edit hide">
+                <input type="text" data-action="change/value('from')">
+            </span>
         </span>
         -
         <span data-action="editable">
             <span class="view">To Date</span>
-            <span class="edit hide"><input type="text"></span>
+            <span class="edit hide">
+                <input type="text" data-action="change/value('to')">
+            </span>
         </span>
     </div>
     <div class="span6">
         <div data-action="editable">
             <span class="view">Company</span>
-            <span class="edit hide"><input type="text"></span>
+            <span class="edit hide">
+                <input type="text" data-action="change/value('company')">
+            </span>
         </div>
         <div data-action="editable">
             <span class="view">Title</span>
-            <span class="edit hide"><input type="text"></span>
+            <span class="edit hide">
+                <input type="text" data-action="change/value('title')">
+            </span>
         </div>
     </div>
-    <div class="span8">
-        <textarea name="description">Description</textarea>
+    <div class="span8 redactor-area">
+        <div class="text-right">
+            <button class="btn btn-small redactor-edit-btn" data-action="redactor/edit">Edit</button>
+            <button class="btn btn-small redactor-save-btn" data-action="redactor/save">Save</button>
+        </div>
+        
+        <div class="redactor-content">
+            Description
+        </div>
     </div>
 </div>
