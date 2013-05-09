@@ -10,7 +10,9 @@
         <div class="span8" data-action="editable">
             <a href="#" data-action="item/remove" class="remove"><span class="icon-remove"></span></a>
             <span class="view"><%= d %></span>
-            <span class="edit hide"><input type="text"></span>
+            <span class="edit hide">
+                <input type="text" data-action="change/value">
+            </span>
         </div>
     </div>
     <% } %>

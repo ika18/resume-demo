@@ -63,7 +63,7 @@ define(['jquery',
         var me = this;
 
         $.get('mock/resume.json').done(function (res) {
-            me._json = res;
+            window._json = me._json = res;
 
             // Deep clone original json
             me._originJson = $.extend(true, {}, res);
@@ -175,16 +175,15 @@ define(['jquery',
             var $input = $target.find('.edit').removeClass('hide').find('input');
 
             $view.addClass('hide');
-            $input.focus().val($view.html());            
-
-            $input.on('focusout', function (e) {
-                changeValue.call(me, e);
-            });
+            $input.focus().val($view.html());
         },
         'dom/action/change/value.keyup': function (topic, $e) {
             if ($e.originalEvent.keyCode === 13) {
                 changeValue.call(this, $e);
             }
+        },
+        'dom/action/save.click': function (topic, $e) {
+            console.log(this._json.content);
         },
         'dom/action/export/pdf.click': function (topic, $e) {
             window.print();

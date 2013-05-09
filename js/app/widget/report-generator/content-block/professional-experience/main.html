@@ -14,22 +14,30 @@
             <div class="span2">
                 <span data-action="editable">
                     <span class="view"><%= d.from %></span>
-                    <span class="edit hide"><input type="text"></span>
+                    <span class="edit hide">
+                        <input type="text" data-action="change/value('from')">
+                    </span>
                 </span>
                 -
                 <span data-action="editable">
                     <span class="view"><%= d.to %></span>
-                    <span class="edit hide"><input type="text"></span>
+                    <span class="edit hide">
+                        <input type="text" data-action="change/value('to')">
+                    </span>
                 </span>
             </div>
             <div class="span6">
                 <div data-action="editable">
                     <span class="view"><%= d.company %></span>
-                    <span class="edit hide"><input type="text"></span>
+                    <span class="edit hide">
+                        <input type="text" data-action="change/value('company')">
+                    </span>
                 </div>
                 <div data-action="editable">
                     <span class="view"><%= d.title %></span>
-                    <span class="edit hide"><input type="text"></span>
+                    <span class="edit hide">
+                        <input type="text" data-action="change/value('title')">
+                    </span>
                 </div>
             </div>
             <div class="span8">

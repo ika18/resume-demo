@@ -17,6 +17,29 @@ define(['jquery',
         education: eduTemplate()
     };
 
+    function changeValue($e, key) {
+        var me = this;
+        var $target = $($e.target);
+        var $root = $target.closest('[data-action="editable"]');
+        var $view = $root .find('.view');
+        var val = $target.val().trim();
+        var $items = me.$container.find('.item');
+        var $thisItem = $target.closest('.item');
+        var index = $items.index($thisItem);
+        
+        $view.html(val);
+
+        $view.removeClass('hide');
+        $root.find('.edit').addClass('hide');
+
+        // Update json
+        if (key) {
+            me._json[index][key] = val;
+        } else {
+            me._json[index] = val;
+        }
+    }
+
     return Widget.extend(function (el, module, json) {
         var me = this;
         me._json = json;
@@ -49,7 +72,7 @@ define(['jquery',
             me.publish(HUB_REMOVE_CONTENT, me._type.replace('-', ' '));
             deferred.resolve();
         },
-        "dom/action.click": $.noop,
+        "dom/action.click.keyup.change": $.noop,
         "dom/action/block/remove.click": function (topic, $e) {
             $e.preventDefault();
             var me = this;
@@ -78,6 +101,23 @@ define(['jquery',
             var $target = $($e.target);
 
             me.$container.append(FIELDS[type]);
+        },
+        'dom/action/editable.click': function (topic, $e) {
+            var me = this;
+            var $target = $($e.target);
+            var $view = $target.find('.view');
+            var $input = $target.find('.edit').removeClass('hide').find('input');
+
+            $view.addClass('hide');
+            $input.focus().val($view.html());
+        },
+        'dom/action/change/value.keyup': function (topic, $e, key) {
+            $e.stopPropagation();
+            var me = this;
+
+            if ($e.originalEvent.keyCode === 13) {
+                changeValue.call(me, $e, key);
+            }
         }
     });
 });

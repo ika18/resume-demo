@@ -8,6 +8,7 @@ define(['compose',
     var HUB_UPDATE_EMPLOYMENT_HISTORY = 'report-generator/employment-history/update';
 
     var REDACTOR_OPT = { 
+        // focus: true,
         air: true,
         airButtons: ['bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|', 'table', 'link', '|', 'alignment', ]
     };
@@ -46,6 +47,6 @@ define(['compose',
                 
                 me.$container.find('.item:last-child').find('textarea').redactor(REDACTOR_OPT);
             };
-        }),
+        })
     });
 });
