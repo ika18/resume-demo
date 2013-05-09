@@ -42,7 +42,7 @@ define(['jquery',
     function order() {
         var me = this;
         var $contentBlock = me.$sortable.find('.content-block');
-        var originContent = me._json.content;
+        var originContent = $.extend(true, [], me._json.content);
         var currentContent = [];
         var type;
         var item;
