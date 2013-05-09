@@ -3,15 +3,18 @@ define(['jquery',
     'troopjs-utils/deferred',
     'template!app/widget/report-generator/fields/pair.html',
     'template!app/widget/report-generator/fields/list.html',
-    'template!app/widget/report-generator/fields/experience.html'], function ($, Widget, tDeferred, pairTemplate, listTemplate, expTemplate) {
+    'template!app/widget/report-generator/fields/experience.html',
+    'template!app/widget/report-generator/fields/education.html'], function ($, Widget, tDeferred, pairTemplate, listTemplate, expTemplate, eduTemplate) {
     'use strict';
     var HUB_DISABLE_DRAGGABLE = 'report-generator/disable/draggable';
     var HUB_ENABLE_DRAGGABLE = 'report-generator/enable/draggable';
+    var HUB_REMOVE_CONTENT = 'report-generator/remove/content/block';
 
     var FIELDS = {
         pair: pairTemplate(),
         list: listTemplate(),
-        exp: expTemplate()
+        exp: expTemplate(),
+        education: eduTemplate()
     };
 
     return Widget.extend(function (el, module, json) {
@@ -29,6 +32,7 @@ define(['jquery',
             var me = this;
 
             me.publish(HUB_ENABLE_DRAGGABLE, me._type);
+            me.publish(HUB_REMOVE_CONTENT, me._type.replace('-', ' '));
             deferred.resolve();
         },
         "dom/action.click": $.noop,

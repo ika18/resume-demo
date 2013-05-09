@@ -1,4 +1,4 @@
-<div class="content-block">
+<div class="content-block" data-type="professional-experience">
     <div class="clearfix atcion-btns">
         <button class="btn btn-small btn-danger pull-right" data-action="block/remove">Remove</button>
         <button class="btn btn-small pull-right" data-action="item/add('exp')">Add</button>
@@ -11,10 +11,26 @@
         <% var d = data[i]; %>
         <div class="row item">
             <a href="#" data-action="item/remove" class="remove"><span class="icon-remove"></span></a>
-            <div class="span2"><%= d.from %> – <%= d.to %></div>
+            <div class="span2">
+                <span data-action="editable">
+                    <span class="view"><%= d.from %></span>
+                    <span class="edit hide"><input type="text"></span>
+                </span>
+                -
+                <span data-action="editable">
+                    <span class="view"><%= d.to %></span>
+                    <span class="edit hide"><input type="text"></span>
+                </span>
+            </div>
             <div class="span6">
-                <div><%= d.company %></div>
-                <div><%= d.title %></div>
+                <div data-action="editable">
+                    <span class="view"><%= d.company %></span>
+                    <span class="edit hide"><input type="text"></span>
+                </div>
+                <div data-action="editable">
+                    <span class="view"><%= d.title %></span>
+                    <span class="edit hide"><input type="text"></span>
+                </div>
             </div>
             <div class="span8">
                 <%= d.description %>

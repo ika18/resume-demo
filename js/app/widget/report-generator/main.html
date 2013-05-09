@@ -21,7 +21,12 @@
         <div class="page-print-block"></div>
 
         <div class="page-content">
-            <h1 class="text-center" contenteditable="true"><%= data.title %></h1>
+            <h1 class="text-center" data-action="editable">
+                <span class="view"><%= data.title %></span>
+                <span class="edit hide">
+                    <input type="text" data-action="change/value">
+                </span>
+            </h1>
 
             <ul class="unstyled sortable-container">
             </ul>

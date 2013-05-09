@@ -26,11 +26,48 @@ define(['jquery',
         }
     }
 
+    function changeValue($e) {
+        var me = this;
+        var $target = $($e.target);
+        var $root = $target.closest('[data-action="editable"]');
+        var $view = $root .find('.view');
+        var val = $target.val().trim();
+
+        $view.html(val);
+
+        $view.removeClass('hide');
+        $root.find('.edit').addClass('hide');
+    }
+
+    function order() {
+        var me = this;
+        var $contentBlock = me.$sortable.find('.content-block');
+        var originContent = me._json.content;
+        var currentContent = [];
+        var type;
+        var item;
+
+        $contentBlock.each(function () {
+            type = $(this).attr('data-type').replace('-', ' ');
+            item = originContent.filter(function (obj) {
+                return obj.type === type;
+            })[0];
+
+            currentContent.push(item);
+        });
+
+        me._json.content = currentContent;
+    }
+
     function render(deferred) {
         var me = this;
 
         $.get('mock/resume.json').done(function (res) {
             me._json = res;
+
+            // Deep clone original json
+            me._originJson = $.extend(true, {}, res);
+
             me.html(template, me._json, deferred);
         });
     }
@@ -49,6 +86,7 @@ define(['jquery',
             placeholder: "sortable-placeholder",
             containment: me.$element.find('.page-inner'),
             // forcePlaceholderSize: true,
+            handle: 'h2',
             axis: "y",
             revert: true,
             start: function (e, ui) {
@@ -60,16 +98,23 @@ define(['jquery',
             update: function (e, ui) {
                 var $item = ui.item;
                 var type = $item.attr('data-type');
+                var deferred = tDeferred();
+
+                deferred.done(function () {
+                    order.call(me);
+                });
 
                 if (type) {
                     var json = (function () {
-                        return me._json.content.filter(function (obj) {
+                        return me._originJson.content.filter(function (obj) {
                             return obj.type === type.replace('-', ' ');
                         })[0].content;
                     }());
                     var weave = 'app/widget/report-generator/content-block/' + type + '/main(json)';
                     $item.data('json', json)
-                        .attr('data-weave', weave).weave();
+                        .attr('data-weave', weave).weave(deferred);
+                } else {
+                    order.call(me);
                 }
             }
         });
@@ -116,5 +161,30 @@ define(['jquery',
             }
             
         },
+        'hub/report-generator/remove/content/block': function (topic, type) {
+            var me = this;
+            me._json.content = me._json.content.filter(function (obj) {
+                return obj.type !== type;
+            });
+        },
+        'dom/action.click.keyup': $.noop,
+        'dom/action/editable.click': function (topic, $e) {
+            var me = this;
+            var $target = $($e.target);
+            var $view = $target.find('.view');
+            var $input = $target.find('.edit').removeClass('hide').find('input');
+
+            $view.addClass('hide');
+            $input.focus().val($view.html());            
+
+            $input.on('focusout', function (e) {
+                changeValue.call(me, e);
+            });
+        },
+        'dom/action/change/value.keyup': function (topic, $e) {
+            if ($e.originalEvent.keyCode === 13) {
+                changeValue.call(this, $e);
+            }
+        }
     });
 });

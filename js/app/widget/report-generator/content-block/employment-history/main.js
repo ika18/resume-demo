@@ -1,7 +1,8 @@
 define(['jquery',
     'app/widget/report-generator/content-block/base/main',
     'troopjs-utils/deferred',
-    'template!./main.html'], function ($, Widget, deferred, template) {
+    'template!./main.html',
+    'template!./row.html'], function ($, Widget, deferred, template, rowTemplate) {
     'use strict';
     function render(deferred) {
         var me = this;
@@ -14,6 +15,12 @@ define(['jquery',
     }, {
         'sig/initialize': function (signal, deferred) {
             render.call(this, deferred);
+        },
+        'hub:memory/report-generator/employment-history/update': function (topic, data) {
+            var me = this;
+            var $tbody = me.$element.find('tbody');
+
+            $tbody.html(rowTemplate(data));
         }
     });
 });

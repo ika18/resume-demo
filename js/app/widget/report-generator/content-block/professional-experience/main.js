@@ -3,8 +3,12 @@ define(['jquery',
     'troopjs-utils/deferred',
     'template!./main.html'], function ($, Widget, deferred, template) {
     'use strict';
+    var HUB_UPDATE_EMPLOYMENT_HISTORY = 'report-generator/employment-history/update';
+
     function render(deferred) {
         var me = this;
+
+        me.publish(HUB_UPDATE_EMPLOYMENT_HISTORY, me._json);
 
         me.html(template, me._json, deferred);
     }

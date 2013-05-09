@@ -36,9 +36,32 @@ body {
 .page-content {
     h1 {
         font-size: 28px;
+
+        input {
+            font-size: 28px;
+            line-height: 40px;
+            height: 40px;
+            vertical-align: top;
+            font-weight: bold;
+        }
     }
     h2 {
         font-size: 21px;
+    }
+
+    [data-action="editable"] {
+        border-bottom: 1px dashed #000;
+
+        input {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            border: none;
+            box-shadow: none;
+            background-color: #eee;
+            border-radius: 0;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
     }
 
     .sortable-container {
@@ -89,7 +112,18 @@ body {
                 display: block;
             };
         }
+        
+        .row-list {
+            .view {
+                display: list-item;
+                list-style-type: disc;
+                list-style-position: inside;
 
+                &.hide {
+                    display: none;
+                }
+            }
+        }
     }
 
 }
