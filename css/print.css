@@ -1,8 +1,22 @@
+header,
+footer {
+    display: none;
+}
+
 .page-outer {
     border: none;
     .box-shadow(none);
+    margin: 0;
 }
 
 .page-content section:hover .atcion-btns {
+    display: none;
+}
+
+.page-content [data-action="editable"] {
+        border-bottom: 0 none;
+}
+
+.page-content .content-block:hover .atcion-btns {
     display: none;
 }

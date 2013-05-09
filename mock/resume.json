@@ -131,10 +131,13 @@
             ]
         }, {
             "type": "compensation",
-            "content": {
-                "current": "xxxxxx",
-                "expectation": "xxxxxx"
-            }
+            "content": [{
+                "type": "current",
+                "txt": "Base Salary: RMB XX per month guaranteed by XX months. Plus other standard MNC social benefit."
+            }, {
+                "type": "expectation",
+                "txt": "To be discussed."
+            }]
         }, {
             "type": "motivation",
             "content": [

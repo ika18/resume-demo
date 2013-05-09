@@ -185,6 +185,9 @@ define(['jquery',
             if ($e.originalEvent.keyCode === 13) {
                 changeValue.call(this, $e);
             }
+        },
+        'dom/action/export/pdf.click': function (topic, $e) {
+            window.print();
         }
     });
 });
