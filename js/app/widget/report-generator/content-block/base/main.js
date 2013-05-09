@@ -25,6 +25,20 @@ define(['jquery',
         airButtons: ['bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|', 'table', 'link', '|', 'alignment']
     };
 
+    function updateData(index, key, value) {
+        var me = this;
+
+        if (!me._json[index]) {
+            me._json[index] = {};
+        }
+
+        if (key) {
+            me._json[index][key] = value;
+        } else {
+            me._json[index] = value;
+        }
+    }
+
     function changeValue($e, key) {
         var me = this;
         var $target = $($e.target);
@@ -41,11 +55,7 @@ define(['jquery',
         $root.find('.edit').addClass('hide');
 
         // Update json
-        if (key) {
-            me._json[index][key] = val;
-        } else {
-            me._json[index] = val;
-        }
+        updateData.call(me, index, key, val);
     }
 
     return Widget.extend(function (el, module, json) {
@@ -95,10 +105,16 @@ define(['jquery',
             $e.preventDefault();
             var me = this;
             var $target = $($e.target);
+            var $items = me.$container.find('.item');
+            var $thisItem = $target.closest('.item');
+            var index = $items.index($thisItem);
 
             var confirm = window.confirm('Do you really want to delete this item?');
 
             if (confirm) {
+                // remove this item in array
+                me._json.splice(index, 1);
+
                 $target.closest('.item').remove();
             }
             
@@ -138,15 +154,16 @@ define(['jquery',
             $e.preventDefault();
             var me = this;
             var $target = $($e.target);
+            var $items = me.$container.find('.item');
+            var $thisItem = $target.closest('.item');
+            var index = $items.index($thisItem);
+            var $area = $target.closest('.redactor-area').removeClass('editing');
+            var $content = $area.removeClass('editing').find('.redactor-content')
+            var html = $content.getCode(); 
 
-            $target.closest('.redactor-area').removeClass('editing').find('.redactor-content').destroyEditor();
-        },
-        'dom/action/redactor/cancel.click': function (topic, $e) {
-            $e.preventDefault();
-            var me = this;
-            var $target = $($e.target);
+            $content.destroyEditor();
 
-            $target.closest('.redactor-area').removeClass('editing').find('.redactor-content').destroyEditor();
+            updateData.call(me, index, 'description', html);
         }
     });
 });
