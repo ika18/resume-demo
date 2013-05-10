@@ -99,7 +99,29 @@
             ]
         }, {
             "type": "employment history",
-            "content": true
+            "content": [
+                {
+                    "from": "2008/02",
+                    "to": "Present",
+                    "company": "Eli Lilly China",
+                    "title": "IT Manager - Business Integration"
+                }, {
+                    "from": "2005/01",
+                    "to": "2008/01",
+                    "company": "AstraZeneca China",
+                    "title": "IS Application Manager"
+                }, {
+                    "from": "2001/05",
+                    "to": "2004/12",
+                    "company": "General Electric",
+                    "title": "Pacific IT Leader"
+                }, {
+                    "from": "1998/02",
+                    "to": "2001/04",
+                    "company": "Ford Financial China",
+                    "title": "System Analyst, Global Information Services"
+                }
+            ]
         }, {
             "type": "professional experience",
             "content": [

@@ -110,7 +110,7 @@ body {
 
             &:hover .remove {
                 display: block;
-            };
+            }
         }
         
         .row-list {
@@ -236,4 +236,41 @@ footer {
     .btn-toolbar {
         display: inline-block;
     }
+}
+
+.page-break {
+    font-style: italic;
+    color: #ddd;
+    border-top: 1px dashed #ddd;
+
+    &:after {
+        content: 'Page Break';
+    }
+}
+.page-print-block {
+    color: grey;
+    font-style: italic;
+    position: relative;
+    font-size: 11px
+}
+.page-start {
+    position: absolute;
+    bottom: 0;
+    vertical-align: bottom;
+    border-bottom: 1px solid grey;
+    width: 90%;
+    margin-left: -45%;
+    left: 50%;
+}
+#top-left,
+#top-center,
+#top-right {
+    width: 33%;
+    float: left;
+}
+#top-center {
+    text-align: center;
+}
+#top-right {
+    text-align: right;
 }

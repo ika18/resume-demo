@@ -25,3 +25,41 @@ footer {
 .redactor_dropdown {
     display: none !important;
 }
+
+
+/*Print header footer*/
+.page-print-block {
+    display: none;
+}
+@page {
+    margin-top: 96px;
+    margin-bottom: 96px;
+
+    @top-left {
+        content: element(topLeft);
+    }
+
+    @top-center {
+        content: element(topCenter);
+    }
+
+    @top-right {
+        content: element(topRight);
+    }
+}
+
+.page-break {
+    display: none;
+    page-break-after: always;
+}
+
+#top-left {
+    position: running(topLeft);
+}
+#top-center {
+    position: running(topCenter);
+}
+#top-right {
+    running(topRight);
+}
+
