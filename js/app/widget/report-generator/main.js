@@ -41,10 +41,10 @@ define(['jquery',
         me._json[key] = val;
     }
 
-    function order() {
+    function order(content) {
         var me = this;
         var $contentBlock = me.$sortable.find('.content-block');
-        var originContent = $.extend(true, [], me._json.content);
+        var originContent = content;
         var currentContent = [];
         var type;
         var item;
@@ -104,11 +104,10 @@ define(['jquery',
                 var content = $.extend(true, [], me._originJson.content);
 
                 deferred.done(function () {
-                    order.call(me);
+                    order.call(me, content);
                 });
 
                 if (type) {
-                    console.log(content);
                     var json = (function () {
                         var items = content.filter(function (obj) {
                             return obj.type === type.replace('-', ' ');
@@ -120,7 +119,7 @@ define(['jquery',
                     $item.data('json', json)
                         .attr('data-weave', weave).weave(deferred);
                 } else {
-                    order.call(me);
+                    order.call(me, content);
                 }
             }
         });
@@ -169,9 +168,10 @@ define(['jquery',
         },
         'hub/report-generator/remove/content/block': function (topic, type) {
             var me = this;
-            me._json.content = me._json.content.filter(function (obj) {
+            var newContent = me._json.content.filter(function (obj) {
                 return obj.type !== type;
             });
+            me._json.content = newContent;
         },
         'dom/action.click.keyup.focusout': $.noop,
         'dom/action/editable.click': function (topic, $e) {
