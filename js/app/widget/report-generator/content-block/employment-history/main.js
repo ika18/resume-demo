@@ -21,7 +21,7 @@ define(['compose',
             var me = this;
             var $tbody = me.$element.find('tbody');
 
-            $tbody.html(rowTemplate(data));
+            $tbody.html(rowTemplate(data.content));
         }
     });
 });

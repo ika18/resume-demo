@@ -122,7 +122,7 @@ define(['jquery',
 
             if (confirm) {
                 // remove this item in array
-                me._json.splice(index, 1);
+                me._json.content.splice(index, 1);
 
                 $target.closest('.item').remove();
 
