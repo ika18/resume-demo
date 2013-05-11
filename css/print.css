@@ -9,7 +9,7 @@ footer {
     display: none !important;
 }
 .page-container {
-    height: 100% !important;
+    height: auto !important;
 }
 .page-outer {
     border: none;
@@ -56,14 +56,16 @@ footer {
     }
 }
 
-.page-break {
+.page-content .page-break {
     border: none;
     page-break-after: always;
-    * {
-        display: none;
-    }
+    margin: 0;
+    padding: 0;
 }
-.page-break:after {
+.page-content .page-break  * {
+    display: none;
+}
+.page-content .page-break:after {
     display: none;
 }
 
