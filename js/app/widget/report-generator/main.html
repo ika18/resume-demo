@@ -19,30 +19,36 @@
     </div>
 </header>
 
-<div class="page-outer">
-    <div class="page-inner">
-        <div class="page-print-block">
-            <div class="page-start clearfix">
-                <span id="top-left">Candidate Report – Strictly Confidential</span>
-                <span id="top-center">Center</span>
-                <span id="top-right">Right</span>
+<div class="page-container">
+    <div class="container-actions">
+        <a href="#" data-action="container/maximize" class="maximize">+</a>
+        <a href="#" data-action="container/minimize" class="minimize">-</a>
+    </div>
+    <div class="page-outer">
+        <div class="page-inner">
+            <div class="page-print-block">
+                <div class="page-start clearfix">
+                    <span id="top-left">Candidate Report – Strictly Confidential</span>
+                    <span id="top-center">Center</span>
+                    <span id="top-right">Right</span>
+                </div>
             </div>
+
+            <div class="page-content">
+                <h1 class="text-center" data-action="editable">
+                    <span class="view"><%= data.title %></span>
+                    <span class="edit hide">
+                        <input type="text" data-action="change/value('title')">
+                    </span>
+                </h1>
+
+                <ul class="unstyled sortable-container">
+                </ul>
+
+            </div>
+
+            <div class="page-print-block"></div>
         </div>
-
-        <div class="page-content">
-            <h1 class="text-center" data-action="editable">
-                <span class="view"><%= data.title %></span>
-                <span class="edit hide">
-                    <input type="text" data-action="change/value('title')">
-                </span>
-            </h1>
-
-            <ul class="unstyled sortable-container">
-            </ul>
-
-        </div>
-
-        <div class="page-print-block"></div>
     </div>
 </div>
 

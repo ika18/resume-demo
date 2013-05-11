@@ -5,6 +5,20 @@ define(['jquery',
     'jquery.ui'], function ($, Widget, tDeferred, template) {
     'use strict';
 
+    var winHeight;
+    var headerHeight;
+    var footerHeight;
+
+    function setPageContainerHeight() {
+        var me = this;
+
+        headerHeight = me.$header.height();
+        footerHeight = me.$footer.height();
+        winHeight = $(window).height();
+
+        me.$pageContainer.height(winHeight - headerHeight - footerHeight);
+    }
+
     function initialContent() {
         var me = this;
         var content = me._json.content;
@@ -86,10 +100,14 @@ define(['jquery',
 
         me.$sortable = me.$element.find(".sortable-container");
         me.$options = me.$element.find('.options');
+        me.$pageContainer = me.$element.find('.page-container');
+        me.$header = me.$element.find('header');
+        me.$footer = me.$element.find('footer');
+        me.$containerActions = me.$element.find('.container-actions');
 
         initialContent.call(me);
 
-        // Sort section
+        // Sort content block
         me.$sortable.sortable({
             cursor: "move",
             placeholder: "sortable-placeholder",
@@ -135,6 +153,7 @@ define(['jquery',
             }
         });
 
+        // Add content block 
         $('.options li').draggable({
             connectToSortable: ".sortable-container",
             helper: 'clone',
@@ -152,6 +171,12 @@ define(['jquery',
             stop: function (e, ui) {
                 ui.item.removeClass('moving');  
             }
+        });
+
+        setPageContainerHeight.call(me);
+
+        $(window).resize(function () {
+            setPageContainerHeight.call(me);
         });
 
         deferred.resolve();
@@ -207,6 +232,39 @@ define(['jquery',
         },
         'dom/action/export/pdf.click': function (topic, $e) {
             window.print();
+        },
+        'dom/action/container/maximize.click': function (topic, $e) {
+            $e.preventDefault();
+
+            var me = this;
+            me.$containerActions.addClass('max');
+
+            me.$footer.add(me.$header).animate({
+                height: 0
+            });
+
+            me.$pageContainer.animate({
+                height: '+=' + (headerHeight + footerHeight)
+            });
+        },
+        'dom/action/container/minimize.click': function (topic, $e) {
+            $e.preventDefault();
+            
+            var me = this;
+            me.$containerActions
+            me.$containerActions.removeClass('max');
+
+            me.$footer.animate({
+                height: footerHeight
+            });
+
+            me.$header.animate({
+                height: headerHeight
+            });
+
+            me.$pageContainer.animate({
+                height: '-=' + (headerHeight + footerHeight)
+            });
         }
     });
 });

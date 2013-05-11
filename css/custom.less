@@ -1,11 +1,56 @@
 body {
     background-color: #ebebeb;
+    overflow: hidden;
+}
+
+.page-container {
+    overflow-y: scroll;
+    position: relative;
+
+    .container-actions {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        font-size: 24px;
+        font-weight: bold;
+
+        a,
+        a:hover {
+            text-decoration: none;
+            .size(22px, 22px);
+            text-align: center;
+            border: 2px solid #0088cc;
+            .border-radius(3px);
+            line-height: 18px;
+            .box-shadow(0 0 2px rgb(83, 165, 206, 0.6));
+        }
+
+        a:hover {
+            border-color: #005580;
+        }
+
+        .maximize {
+            display: block;
+        }
+        .minimize {
+            display: none;
+        }
+
+        &.max {
+            .maximize {
+                display: none;
+            }
+            .minimize {
+                display: block;
+            }
+        }
+    }
 }
 .page-outer {
     background-color: #fff;
     border: 1px solid #cacaca;
     width: 818px;
-    margin: 65px auto;
+    margin: 30px auto;
     .box-shadow(0 0 4px rgba(0,0,0,0.1));
 }
 .page-inner {
@@ -161,10 +206,10 @@ body {
 header {
     background: #ffffff;
     border-bottom: 1px solid #cacaca;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 10;
+    overflow: hidden;
+    // position: fixed;
+    // top: 0;
+    // z-index: 10;
 
     .options {
         li {
@@ -192,10 +237,10 @@ header {
 footer {
     background: #ffffff;
     border-top: 1px solid #cacaca;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    z-index: 10;
+    overflow: hidden;
+    // position: fixed;
+    // bottom: 0;
+    // z-index: 10;
 
     input[type="text"] {
         margin: 0;
