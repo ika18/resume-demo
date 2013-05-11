@@ -18,7 +18,7 @@ define(['jquery',
             type = content[i].type.replace(' ', '-').toLowerCase();
             weave = 'app/widget/report-generator/content-block/' + type + '/main(json)';
 
-            $li = $('<li></li>').data('json', content[i].content)
+            $li = $('<li></li>').data('json', content[i].content || '')
                 .attr('data-weave', weave);
 
             me.$sortable.append($li);
@@ -49,11 +49,18 @@ define(['jquery',
         var type;
         var item;
 
+
+
         $contentBlock.each(function () {
             type = $(this).attr('data-type').replace('-', ' ');
-            item = originContent.filter(function (obj) {
-                return obj.type === type;
-            })[0];
+
+            if (type === 'page break') {
+                item = {type: 'page break'};
+            } else {
+                item = originContent.filter(function (obj) {
+                    return obj.type === type;
+                })[0];
+            }
 
             currentContent.push(item);
         });
@@ -102,20 +109,24 @@ define(['jquery',
                 var type = $item.attr('data-type');
                 var deferred = tDeferred();
                 var content = $.extend(true, [], me._originJson.content);
+                var json = '';
+                var weave;
 
                 deferred.done(function () {
                     order.call(me, content);
                 });
 
                 if (type) {
-                    var json = (function () {
-                        var items = content.filter(function (obj) {
-                            return obj.type === type.replace('-', ' ');
-                        });
+                    if (type !== 'page-break') {
+                        json = (function () {
+                            var items = content.filter(function (obj) {
+                                return obj.type === type.replace('-', ' ');
+                            });
 
-                        return items[0].content;
-                    }());
-                    var weave = 'app/widget/report-generator/content-block/' + type + '/main(json)';
+                            return items[0].content;
+                        }());
+                    }
+                    weave = 'app/widget/report-generator/content-block/' + type + '/main(json)';
                     $item.data('json', json)
                         .attr('data-weave', weave).weave(deferred);
                 } else {

@@ -66,7 +66,10 @@ define(['jquery',
         'sig/initialize': function (signal, deferred) {
             var me = this;
 
-            me.publish(HUB_DISABLE_DRAGGABLE, me._type);
+            if (me._type !== 'page-break') {
+                me.publish(HUB_DISABLE_DRAGGABLE, me._type);
+            }
+            
             deferred.resolve();
         },
         'sig/start': function (signal, deferred) {
