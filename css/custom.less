@@ -112,82 +112,44 @@ body {
                 display: block;
             }
         }
-        
-        .row-list {
-            .view {
-                display: list-item;
-                list-style-type: disc;
-                list-style-position: inside;
+    }
 
-                &.hide {
-                    display: none;
-                }
+    .redactor-area {
+        .btn {
+            margin-top: 10px;
+        }
+        .redactor-edit-btn {
+            visibility: hidden;
+        }
+        &:hover {
+            .redactor-edit-btn {
+                visibility: visible;
             }
         }
 
+        .redactor-save-btn {
+            display: none;
+        }
 
-        .redactor-area {
-            .btn {
-                margin-top: 10px;
-            }
+        &.editing {
             .redactor-edit-btn {
-                visibility: hidden;
-            }
-            &:hover {
-                .redactor-edit-btn {
-                    visibility: visible;
-                }
-            }
-
-            .redactor-save-btn,
-            .redactor-cancel-btn {
+                // visibility: visible;
                 display: none;
             }
-
-            &.editing {
-                .redactor-edit-btn {
-                    // visibility: visible;
-                    display: none;
-                }
-                .redactor-save-btn,
-                .redactor-cancel-btn {
-                    display: inline-block;
-                }
+            .redactor-save-btn,
+            .redactor-cancel-btn {
+                display: inline-block;
             }
-        }
-
-        .redactor-content {
-            // position: relative;
-            // outline: none;
-            // box-shadow: none !important;
-            // padding: 15px !important;
-            // padding-left: 0 !important;
-            // padding-right: 0 !important;
-            // overflow: auto;
-            // white-space: normal;
-            // min-height: 30px;
-            margin-bottom: 15px;
-        }
-    
-        .redactor_box {
-            // border: 0 none;
-            margin: 15px 0;
-        }
-
-        .redactor_editor {
-            // padding-left: 0 !important;
-            // padding-right: 0 !important;
-            
-            // &:focus {
-            //     background-color: #eee !important;
-            // }
-
-            // ::selection {
-            //     background: #ffb7b7; /* Safari */
-            // }
         }
     }
 
+    .redactor-content {
+        margin-bottom: 15px;
+    }
+
+    .redactor_box {
+        margin: 15px 0;
+    }
 }
 
 header {

@@ -83,22 +83,12 @@
             }]
         }, {
             "type": "certificates",
-            "content": [
-                "Project Management Professional (PMP)",
-                "Certified Information System Auditor (CISA)",
-                "Six Sigma (Green Belt)"
-            ]
+            "content": "<ul><li>Project Management Professional (PMP)</li><li>Certified Information System Auditor (CISA)</li><li>Six Sigma (Green Belt)</li></ul>"
         }, {
             "type": "page break"    
         }, {
             "type": "evaluation comments",
-            "content": [
-                "10+ years experience in IT area. 10 years experience as IS manager/leader in Top 500 Companies",
-                "Develop organization and empower people",
-                "Experience in leading partners/vendors in China and Asia Pac",
-                "Responsible for ~30M RMB budget and spend in IS projects and operations annually",
-                "Experience in Sales & Marketing, Ecommerce, ERP and Finance, HR, Purchasing IS solutions and innovations"
-            ]
+            "content": "<ul><li>10+ years experience in IT area. 10 years experience as IS manager/leader in Top 500 Companies</li><li>Develop organization and empower people</li><li>Experience in leading partners/vendors in China and Asia Pac</li><li>Responsible for ~30M RMB budget and spend in IS projects and operations annually</li><li>Experience in Sales & Marketing, Ecommerce, ERP and Finance, HR, Purchasing IS solutions and innovations</li></ul>"
         }, {
             "type": "employment history",
             "content": [
@@ -164,14 +154,10 @@
             }]
         }, {
             "type": "motivation",
-            "content": [
-                "Seek for opportunity in new area"
-            ]
+            "content": "<ul><li>Seek for opportunity in new area</li></ul>"
         }, {
             "type": "availability",
-            "content": [
-                "4 weeks after confirmation on Offer Letter"
-            ]
+            "content": "<ul><li>4 weeks after confirmation on Offer Letter</li><ul>"
         }
     ]
 }

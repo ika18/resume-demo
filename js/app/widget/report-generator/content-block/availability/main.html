@@ -1,19 +1,15 @@
-<div class="content-block item-container" data-type="availability">
+<div class="content-block redactor-area" data-type="availability">
     <div class="clearfix atcion-btns">
         <button class="btn btn-small btn-danger pull-right" data-action="block/remove">Remove</button>
-        <button class="btn btn-small pull-right" data-action="item/add('list')">Add</button>
+        <button class="btn btn-small redactor-edit-btn pull-right" data-action="redactor/edit">Edit</button>
+        <button class="btn btn-small redactor-save-btn pull-right" data-action="redactor/save">Save</button>
     </div>
     <h2>AVAILABILITY:</h2>
-    <% for (var i = 0, l = data.length; i < l; i++) { %>
-    <% var d = data[i]; %>
-    <div class="row item row-list">
-        <div class="span8" data-action="editable">
-            <a href="#" data-action="item/remove" class="remove"><span class="icon-remove"></span></a>
-            <span class="view"><%= d %></span>
-            <span class="edit hide">
-                <input type="text" data-action="change/value">
-            </span>
+    <div class="row">
+        <div class="span8">
+            <div class="redactor-content">
+                <%= data.content %>
+            </div>
         </div>
     </div>
-    <% } %>
 </div>

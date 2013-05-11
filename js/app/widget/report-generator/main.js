@@ -18,7 +18,7 @@ define(['jquery',
             type = content[i].type.replace(' ', '-').toLowerCase();
             weave = 'app/widget/report-generator/content-block/' + type + '/main(json)';
 
-            $li = $('<li></li>').data('json', content[i].content || '')
+            $li = $('<li></li>').data('json', content[i])
                 .attr('data-weave', weave);
 
             me.$sortable.append($li);
@@ -109,7 +109,7 @@ define(['jquery',
                 var type = $item.attr('data-type');
                 var deferred = tDeferred();
                 var content = $.extend(true, [], me._originJson.content);
-                var json = '';
+                var json = {};
                 var weave;
 
                 deferred.done(function () {
@@ -123,7 +123,7 @@ define(['jquery',
                                 return obj.type === type.replace('-', ' ');
                             });
 
-                            return items[0].content;
+                            return items[0];
                         }());
                     }
                     weave = 'app/widget/report-generator/content-block/' + type + '/main(json)';

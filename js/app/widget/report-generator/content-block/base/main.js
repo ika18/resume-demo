@@ -2,10 +2,9 @@ define(['jquery',
     'troopjs-core/component/widget',
     'troopjs-utils/deferred',
     'template!app/widget/report-generator/fields/pair.html',
-    'template!app/widget/report-generator/fields/list.html',
     'template!app/widget/report-generator/fields/experience.html',
     'template!app/widget/report-generator/fields/education.html',
-    'redactor'], function ($, Widget, tDeferred, pairTemplate, listTemplate, expTemplate, eduTemplate) {
+    'redactor'], function ($, Widget, tDeferred, pairTemplate, expTemplate, eduTemplate) {
     'use strict';
     var HUB_DISABLE_DRAGGABLE = 'report-generator/disable/draggable';
     var HUB_ENABLE_DRAGGABLE = 'report-generator/enable/draggable';
@@ -13,7 +12,6 @@ define(['jquery',
 
     var FIELDS = {
         pair: pairTemplate(),
-        list: listTemplate(),
         exp: expTemplate(),
         education: eduTemplate()
     };
@@ -25,18 +23,26 @@ define(['jquery',
         airButtons: ['bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|', 'table', 'link', '|', 'alignment']
     };
 
+    // Updated experience
     function updateData(index, key, value) {
         var me = this;
 
-        if (!me._json[index]) {
-            me._json[index] = {};
+        if (!me._json.content[index]) {
+            me._json.content[index] = {};
         }
 
         if (key) {
-            me._json[index][key] = value;
+            me._json.content[index][key] = value;
         } else {
-            me._json[index] = value;
+            me._json.content[index] = value;
         }
+    }
+
+    // Update other type's content
+    function updateData2(value) {
+        var me = this;
+
+        me._json.content = value;
     }
 
     function changeValue($e, key) {
@@ -172,18 +178,25 @@ define(['jquery',
         },
         'dom/action/redactor/save.click': function (topic, $e) {
             $e.preventDefault();
+            
             var me = this;
             var $target = $($e.target);
-            var $items = me.$container.find('.item');
-            var $thisItem = $target.closest('.item');
-            var index = $items.index($thisItem);
             var $area = $target.closest('.redactor-area').removeClass('editing');
             var $content = $area.removeClass('editing').find('.redactor-content')
+            var $items = me.$container.find('.item');
+            // Get content's html
             var html = $content.getCode(); 
 
-            $content.destroyEditor();
+            if ($items.length) {
+                var $thisItem = $target.closest('.item');
+                var index = $items.index($thisItem);
+                updateData.call(me, index, 'description', html);
+            } else {
+                updateData2.call(me, html);
+            }
 
-            updateData.call(me, index, 'description', html);
+            // Destroy editor
+            $content.destroyEditor();
         }
     });
 });

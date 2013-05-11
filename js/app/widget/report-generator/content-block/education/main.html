@@ -4,8 +4,9 @@
         <button class="btn btn-small pull-right" data-action="item/add('education')">Add</button>
     </div>
     <h2>EDUCATION:</h2>
-    <% for (var i = 0, l = data.length; i < l; i++) { %>
-    <% var d = data[i]; %>
+    <% var content = data.content; %>
+    <% for (var i = 0, l = content.length; i < l; i++) { %>
+    <% var d = content[i]; %>
     <div class="row item">
         <a href="#" data-action="item/remove" class="remove"><span class="icon-remove"></span></a>
         <div class="span2">
