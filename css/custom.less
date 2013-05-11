@@ -73,7 +73,8 @@ body {
     }
 
     .content-block {
-        margin: 40px 0;
+        // margin: 40px 0;
+        padding: 20px 0;
         position: relative;
 
         h2:hover {
@@ -89,11 +90,16 @@ body {
             display: none;
             position: absolute;
             right: 0;
-            top: 0;
+            top: 35px;
             button {
                 margin-left: 5px;
             }
         }
+        .atcion-btns-bottom {
+            bottom: 0;
+            top: initial;
+        }
+
         &:hover .atcion-btns {
             display: block;
         }
