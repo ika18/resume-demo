@@ -160,19 +160,6 @@ define(['jquery',
             revert: "invalid",
         });
 
-        $('.sortable-items').sortable({
-            cursor: "move",
-            placeholder: "sortable-placeholder",
-            forcePlaceholderSize: true,
-            axis: "y",
-            start: function (e, ui) {
-                ui.item.addClass('moving');
-            },
-            stop: function (e, ui) {
-                ui.item.removeClass('moving');  
-            }
-        });
-
         setPageContainerHeight.call(me);
 
         $(window).resize(function () {
