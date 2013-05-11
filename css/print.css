@@ -1,8 +1,16 @@
+body {
+    overflow: inherit;
+}
 header,
 footer {
     display: none;
 }
-
+.container-actions {
+    display: none !important;
+}
+.page-container {
+    height: 100% !important;
+}
 .page-outer {
     border: none;
     .box-shadow(none);
@@ -51,6 +59,9 @@ footer {
 .page-break {
     border: none;
     page-break-after: always;
+    * {
+        display: none;
+    }
 }
 .page-break:after {
     display: none;
