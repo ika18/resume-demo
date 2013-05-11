@@ -18,14 +18,14 @@
             <a href="#" data-action="item/remove" class="remove"><span class="icon-remove"></span></a>
             <div class="span2">
                 <span data-action="editable">
-                    <span class="view"><%= d.from %></span>
+                    <span class="view from"><%= d.from %></span>
                     <span class="edit hide">
                         <input type="text" data-action="change/value('from')">
                     </span>
                 </span>
                 -
                 <span data-action="editable">
-                    <span class="view"><%= d.to %></span>
+                    <span class="view to"><%= d.to %></span>
                     <span class="edit hide">
                         <input type="text" data-action="change/value('to')">
                     </span>
@@ -33,13 +33,13 @@
             </div>
             <div class="span6">
                 <div data-action="editable">
-                    <span class="view"><%= d.company %></span>
+                    <span class="view company"><%= d.company %></span>
                     <span class="edit hide">
                         <input type="text" data-action="change/value('company')">
                     </span>
                 </div>
                 <div data-action="editable">
-                    <span class="view"><%= d.title %></span>
+                    <span class="view title"><%= d.title %></span>
                     <span class="edit hide">
                         <input type="text" data-action="change/value('title')">
                     </span>
@@ -51,7 +51,7 @@
                     <button class="btn btn-small btn-primary redactor-save-btn" data-action="redactor/save">Save</button>
                 </div>
                 
-                <div class="redactor-content">
+                <div class="redactor-content description">
                     <%= d.description %>
                 </div>
             </div>
