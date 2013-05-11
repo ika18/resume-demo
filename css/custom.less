@@ -164,6 +164,21 @@ body {
             }
         }
     }
+    .page-break {
+        font-style: italic;
+        color: #ddd;
+        border-top: 1px dashed #ddd;
+        padding: 0;
+        margin: 20px 0;
+
+        &:after {
+            content: 'Page Break';
+        }
+
+        .atcion-btns {
+            top: 0;
+        }
+    }
 
     .redactor-area {
         .btn {
@@ -257,15 +272,6 @@ footer {
     }
 }
 
-.page-break {
-    font-style: italic;
-    color: #ddd;
-    border-top: 1px dashed #ddd;
-
-    &:after {
-        content: 'Page Break';
-    }
-}
 .page-print-block {
     color: grey;
     font-style: italic;
