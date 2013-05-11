@@ -1,0 +1,72 @@
+<header>
+    <div class="container-fluid">
+        <ul class="inline options">
+            <li data-type="client-information">Client Information</li>
+            <li data-type="personal-information">Personal Information</li>
+            <li data-type="education">Education</li>
+            <li data-type="training">Training</li>
+            <li data-type="certificates">Certificates</li>
+            <li data-type="evaluation-comments">Evaluation &amp; Comments</li>
+            <li data-type="employment-history">Employment History</li>
+            <li data-type="professional-experience">Professional Experience</li>
+            <li data-type="compensation">Compensation</li>
+            <li data-type="motivation">Motivation</li>
+            <li data-type="availability">Availability</li>
+        </ul>
+        <ul class="inline options">
+            <li data-type="page-break">Page break</li>
+        </ul>
+    </div>
+</header>
+
+<div class="page-container">
+    <div class="container-actions">
+        <a href="#" data-action="container/maximize" class="maximize">+</a>
+        <a href="#" data-action="container/minimize" class="minimize">-</a>
+    </div>
+    <div class="page-outer">
+        <div class="page-inner">
+            <div class="page-print-block">
+                <div class="page-start clearfix">
+                    <span id="top-left">Candidate Report – Strictly Confidential</span>
+                    <span id="top-center">Center</span>
+                    <span id="top-right">Right</span>
+                </div>
+            </div>
+
+            <div class="page-content">
+                <h1 class="text-center" data-action="editable">
+                    <span class="view"><%= data.title %></span>
+                    <span class="edit hide">
+                        <input type="text" data-action="change/value('title')">
+                    </span>
+                </h1>
+
+                <ul class="unstyled sortable-container">
+                </ul>
+
+            </div>
+
+            <div class="page-print-block"></div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container-fluid text-right">
+        <input type="text" value="<%= data.filename %>" data-action="change/value('filename')" class="span7">
+        <div class="btn-toolbar">
+            <div class="btn-group">
+                <button class="btn btn-primary" data-action="save">Save</button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-danger">Reset</button>
+            </div>
+            <div class="btn-group">
+                <button class="btn" data-action="export/pdf">Export PDF</button>
+                <button class="btn">Export DOC</button>
+            </div>
+        </div>
+    </div>
+
+</footer>

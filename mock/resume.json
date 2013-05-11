@@ -1,0 +1,163 @@
+{
+    "header": {
+        "left": {
+            "txt": "xxxxx"
+        },
+        "center": null,
+        "right": {
+            "img": "url"
+        }
+    },
+
+    "footer": {
+        "left": null,
+        "center": {
+            "txt": "xxxx"
+        },
+        "right": null
+    },
+
+    "title": "CONFIDENTIAL CANDIDATE REPORT",
+    "filename": "Andrew CHEN 陈一林's Candidate Report",
+
+    "content": [
+        {
+            "type": "client information",
+            "content": [
+                {
+                    "type": "Name",
+                    "txt": "MSD China"
+                },
+                {
+                    "type": "Position",
+                    "txt": "IT Director of China Region"
+                }
+            ]
+        }, {
+            "type": "personal information",
+            "content": [
+                {
+                    "type": "Name",
+                    "txt": "Andrew CHEN 陈一林"
+                },
+                {
+                    "type": "Date of Birth",
+                    "txt": "1975/12"
+                },
+                {
+                    "type": "Gender",
+                    "txt": "Male"
+                },
+                {
+                    "type": "Nationality",
+                    "txt": "China"
+                },
+                {
+                    "type": "Resides",
+                    "txt": "Shanghai"
+                },
+                {
+                    "type": "Language",
+                    "txt": "Fluent English, Mandarin and Cantonese"
+                },
+                {
+                    "type": "Marriage Status",
+                    "txt": "Married"
+                }
+            ]
+        }, {
+            "type": "education",
+            "content": [
+                {
+                    "from": "1995/09",
+                    "to": "1999/07",
+                    "school": "Shanghai Jiao Tong University",
+                    "specialized": "Bachelor degree with major in Business and Finance English"
+                }
+            ]
+        }, {
+            "type": "training",
+            "content": [{
+                "date": "2004/08",
+                "txt": "\"Six Sigma\" Green Belt Training"
+            }]
+        }, {
+            "type": "certificates",
+            "content": "<ul><li>Project Management Professional (PMP)</li><li>Certified Information System Auditor (CISA)</li><li>Six Sigma (Green Belt)</li></ul>"
+        }, {
+            "type": "page break"    
+        }, {
+            "type": "evaluation comments",
+            "content": "<ul><li>10+ years experience in IT area. 10 years experience as IS manager/leader in Top 500 Companies</li><li>Develop organization and empower people</li><li>Experience in leading partners/vendors in China and Asia Pac</li><li>Responsible for ~30M RMB budget and spend in IS projects and operations annually</li><li>Experience in Sales & Marketing, Ecommerce, ERP and Finance, HR, Purchasing IS solutions and innovations</li></ul>"
+        }, {
+            "type": "employment history",
+            "content": [
+                {
+                    "from": "2008/02",
+                    "to": "Present",
+                    "company": "Eli Lilly China",
+                    "title": "IT Manager - Business Integration"
+                }, {
+                    "from": "2005/01",
+                    "to": "2008/01",
+                    "company": "AstraZeneca China",
+                    "title": "IS Application Manager"
+                }, {
+                    "from": "2001/05",
+                    "to": "2004/12",
+                    "company": "General Electric",
+                    "title": "Pacific IT Leader"
+                }, {
+                    "from": "1998/02",
+                    "to": "2001/04",
+                    "company": "Ford Financial China",
+                    "title": "System Analyst, Global Information Services"
+                }
+            ]
+        }, {
+            "type": "professional experience",
+            "content": [
+                {
+                    "from": "2008/02",
+                    "to": "Present",
+                    "company": "Eli Lilly China",
+                    "title": "IT Manager - Business Integration",
+                    "description": "<ul><li>Major applications include: ERP, CRM, BI/DW, T&amp;E, SharePoint, eApproval, HR systems, Product websites, and SMS/MMS platform.</li><li>Major projects include: iPad rollout to ~4000 sales with interactive detailing and sales automation applications, Digital Marketing/Multi-channel, Sales Call Center, Veeva CRM, Sales FORECAST, and Distributor Data Integration Reporting.</li><li>Lead the team working on AstraZeneca Global/Regional initiatives, e.g. Global Travel &amps; Expense Management system, Global HR system, Global Digital Sales and Marketing capabilities.</li></ul>"
+                }, {
+                    "from": "2005/01",
+                    "to": "2008/01",
+                    "company": "AstraZeneca China",
+                    "title": "IS Application Manager",
+                    "description": ""
+                }, {
+                    "from": "2001/05",
+                    "to": "2004/12",
+                    "company": "General Electric",
+                    "title": "Pacific IT Leader",
+                    "description": ""
+                }, {
+                    "from": "1998/02",
+                    "to": "2001/04",
+                    "company": "Ford Financial China",
+                    "title": "System Analyst, Global Information Services",
+                    "description": ""
+                }
+            ]
+        }, {
+            "type": "compensation",
+            "content": [{
+                "type": "current",
+                "txt": "Base Salary: RMB XX per month guaranteed by XX months. Plus other standard MNC social benefit."
+            }, {
+                "type": "expectation",
+                "txt": "To be discussed."
+            }]
+        }, {
+            "type": "motivation",
+            "content": "<ul><li>Seek for opportunity in new area</li></ul>"
+        }, {
+            "type": "availability",
+            "content": "<ul><li>4 weeks after confirmation on Offer Letter</li><ul>"
+        }
+    ]
+}
