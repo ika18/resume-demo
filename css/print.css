@@ -49,8 +49,11 @@ footer {
 }
 
 .page-break {
-    display: none;
+    border: none;
     page-break-after: always;
+}
+.page-break:after {
+    display: none;
 }
 
 #top-left {
