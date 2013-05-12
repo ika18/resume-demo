@@ -226,9 +226,14 @@ define(['jquery',
             var me = this;
             me.$containerActions.addClass('max');
 
-            me.$footer.add(me.$header).animate({
-                height: 0
+            me.$footer.animate({
+                height: 'toggle'
             });
+
+            me.$header.animate({
+                height: 'toggle'
+            });
+
 
             me.$pageContainer.animate({
                 height: '+=' + (headerHeight + footerHeight)
@@ -238,15 +243,14 @@ define(['jquery',
             $e.preventDefault();
             
             var me = this;
-            me.$containerActions
             me.$containerActions.removeClass('max');
 
             me.$footer.animate({
-                height: footerHeight
+                height: 'toggle'
             });
 
             me.$header.animate({
-                height: headerHeight
+                height: 'toggle'
             });
 
             me.$pageContainer.animate({
