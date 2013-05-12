@@ -1,26 +1,15 @@
-<div class="content-block item-container" data-type="training">
+<div class="content-block redactor-area" data-type="training">
     <div class="clearfix atcion-btns">
         <button class="btn btn-small btn-danger pull-right" data-action="block/remove">Remove</button>
-        <button class="btn btn-small pull-right" data-action="item/add('pair')">Add</button>
+        <button class="btn btn-small redactor-edit-btn pull-right" data-action="redactor/edit">Edit</button>
+        <button class="btn btn-small btn-primary redactor-save-btn pull-right" data-action="redactor/save">Save</button>
     </div>
     <h2>TRAINING:</h2>
-    <% var content = data.content; %>
-    <% for (var i = 0, l = content.length; i < l; i++) { %>
-    <% var d = content[i]; %>
-    <div class="row item">
-        <a href="#" data-action="item/remove" class="remove"><span class="icon-remove"></span></a>
-        <div class="span2" data-action="editable">
-                <span class="view"><%= d.date %></span>
-                <span class="edit hide">
-                    <input type="text" data-action="change/value('date')">
-                </span>
-        </div>
-        <div class="span6" data-action="editable">
-                <span class="view"><%= d.txt %></span>
-                <span class="edit hide">
-                    <input type="text" data-action="change/value('txt')">
-                </span>
+    <div class="row">
+        <div class="span8">
+            <div class="redactor-content">
+                <%= data.content %>
+            </div>
         </div>
     </div>
-    <% } %>
 </div>

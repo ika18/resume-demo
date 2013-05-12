@@ -80,10 +80,7 @@
             ]
         }, {
             "type": "training",
-            "content": [{
-                "date": "2004/08",
-                "txt": "\"Six Sigma\" Green Belt Training"
-            }]
+            "content": "<p>2004/8 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;\"Six Sigma\" Green Belt Training</p>"
         }, {
             "type": "certificates",
             "content": "<ul><li>Project Management Professional (PMP)</li><li>Certified Information System Auditor (CISA)</li><li>Six Sigma (Green Belt)</li></ul>"
