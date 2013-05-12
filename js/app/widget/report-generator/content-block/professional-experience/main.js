@@ -1,8 +1,9 @@
-define(['jquery',
+define(['compose',
+    'jquery',
     'app/widget/report-generator/content-block/base/main',
     'troopjs-utils/deferred',
     'template!./main.html',
-    'jquery.ui'], function ($, Widget, deferred, template) {
+    'jquery.ui'], function (Compose, $, Widget, deferred, template) {
     'use strict';
     var HUB_UPDATE_EMPLOYMENT_HISTORY = 'report-generator/employment-history/update';
 
@@ -58,9 +59,12 @@ define(['jquery',
         'sig/initialize': function (signal, deferred) {
             render.call(this, deferred);
         },
-        'sig/start': function (signal, deferred) {
-            onRendered.call(this);
-        },
+        'sig/start': Compose.around(function (base) {
+            return function (signal, deferred) {
+                base.call(this, signal, deferred);
+                onRendered.call(this);
+            }
+        }),
         'afterOperation': function (topic, event) {
             var me = this;
             me.publish(HUB_UPDATE_EMPLOYMENT_HISTORY, me._json);
