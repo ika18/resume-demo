@@ -259,9 +259,6 @@ footer {
     background: #ffffff;
     border-top: 1px solid #cacaca;
     overflow: hidden;
-    // position: fixed;
-    // bottom: 0;
-    // z-index: 10;
 
     input[type="text"] {
         margin: 0;
@@ -278,24 +275,36 @@ footer {
     position: relative;
     font-size: 11px
 }
-.page-start {
+.page-start,
+.page-end {
     position: absolute;
     bottom: 0;
-    vertical-align: bottom;
     border-bottom: 1px solid grey;
     width: 90%;
     margin-left: -45%;
     left: 50%;
+
+    td {
+        vertical-align: bottom;
+        width: 33%;
+
+        img {
+            height: 60px;
+        }
+    }
+
+    .center {
+        text-align: center;
+    }
+    .right {
+        text-align: right;
+    }
 }
-#top-left,
-#top-center,
-#top-right {
-    width: 33%;
-    float: left;
+
+.page-end {
+    border-bottom: 0 none;
+    border-top: 1px solid grey;
+    bottom: auto;
+    top: 0;
 }
-#top-center {
-    text-align: center;
-}
-#top-right {
-    text-align: right;
-}
+

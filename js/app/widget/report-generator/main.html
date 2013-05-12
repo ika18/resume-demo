@@ -1,3 +1,26 @@
+<%
+var header = data.header;
+var footer = data.footer;
+
+function infoOutput(data) {
+    var val = '';
+
+    if (!data) {
+        return val;
+    }
+    
+    switch (data.type) {
+        case 'txt':
+            val = data.content;
+            break;
+        case 'img':
+            val = '<img src="' + data.content + '"/>';
+            break;
+    }
+
+    return val;
+}
+%>
 <header>
     <div class="container-fluid">
         <ul class="inline options">
@@ -27,11 +50,13 @@
     <div class="page-outer">
         <div class="page-inner">
             <div class="page-print-block">
-                <div class="page-start clearfix">
-                    <span id="top-left">Candidate Report – Strictly Confidential</span>
-                    <span id="top-center">Center</span>
-                    <span id="top-right">Right</span>
-                </div>
+                <table class="page-start">
+                    <tr>
+                        <td class="left"><%= infoOutput(header.left) %></td>
+                        <td class="center"><%= infoOutput(header.center) %></td>
+                        <td class="right"><%= infoOutput(header.right) %></td>
+                    </tr>
+                </table>
             </div>
 
             <div class="page-content">
@@ -47,7 +72,15 @@
 
             </div>
 
-            <div class="page-print-block"></div>
+            <div class="page-print-block">
+                <table class="page-end">
+                    <tr>
+                        <td class="left"><%= infoOutput(footer.left) %></td>
+                        <td class="center"><%= infoOutput(footer.center) %></td>
+                        <td class="right"><%= infoOutput(footer.right) %></td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </div>

@@ -1,18 +1,21 @@
 {
     "header": {
         "left": {
-            "txt": "xxxxx"
+            "type": "txt",
+            "content": "Candidate Report – Strictly Confidential"
         },
         "center": null,
         "right": {
-            "img": "url"
+            "type": "img",
+            "content": "http://www.gllue.com/wp-content/uploads/2013/02/Logo1.png"
         }
     },
 
     "footer": {
         "left": null,
         "center": {
-            "txt": "xxxx"
+            "type": "txt",
+            "content": "Gllue Software"
         },
         "right": null
     },
