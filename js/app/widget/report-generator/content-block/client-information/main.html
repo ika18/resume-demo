@@ -3,7 +3,7 @@
         <button class="btn btn-small btn-danger pull-right" data-action="block/remove">Remove</button>
         <button class="btn btn-small pull-right" data-action="item/add('pair')">Add</button>
     </div>
-    <h2>CLIENT INFORMATION:</h2>
+    <h2><%= data.title %>:</h2>
     <% var content = data.content; %>
     <% for (var i = 0, l = content.length; i < l; i++) { %>
     <% var d = content[i]; %>
@@ -16,7 +16,7 @@
             </span>
         </div>
         <div class="span6" data-action="editable">
-            <span class="view"><%= d.txt %></span>
+            <span class="view"><%= d.content %></span>
             <span class="edit hide">
                 <input type="text" data-action="change/value('txt')">
             </span>

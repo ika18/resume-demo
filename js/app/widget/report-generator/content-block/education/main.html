@@ -3,7 +3,7 @@
         <button class="btn btn-small btn-danger pull-right" data-action="block/remove">Remove</button>
         <button class="btn btn-small pull-right" data-action="item/add('education')">Add</button>
     </div>
-    <h2>EDUCATION:</h2>
+    <h2><%= data.title %>:</h2>
     <% var content = data.content; %>
     <% for (var i = 0, l = content.length; i < l; i++) { %>
     <% var d = content[i]; %>

@@ -8,7 +8,7 @@ define(['compose',
     function render(deferred) {
         var me = this;
 
-        me.html(template, {}, deferred);
+        me.html(template, me._json, deferred);
     }
 
     return Widget.extend(function () {
