@@ -100,23 +100,23 @@
             "title": "Employment History",
             "content": [
                 {
-                    "from": "2008/02",
-                    "to": "Present",
+                    "start": "2008/02",
+                    "end": "Present",
                     "company": "Eli Lilly China",
                     "title": "IT Manager - Business Integration"
                 }, {
-                    "from": "2005/01",
-                    "to": "2008/01",
+                    "start": "2005/01",
+                    "end": "2008/01",
                     "company": "AstraZeneca China",
                     "title": "IS Application Manager"
                 }, {
-                    "from": "2001/05",
-                    "to": "2004/12",
+                    "start": "2001/05",
+                    "end": "2004/12",
                     "company": "General Electric",
                     "title": "Pacific IT Leader"
                 }, {
-                    "from": "1998/02",
-                    "to": "2001/04",
+                    "start": "1998/02",
+                    "end": "2001/04",
                     "company": "Ford Financial China",
                     "title": "System Analyst, Global Information Services"
                 }
@@ -126,26 +126,26 @@
             "title": "Professional Experience",
             "content": [
                 {
-                    "from": "2008/02",
-                    "to": "Present",
+                    "start": "2008/02",
+                    "end": "Present",
                     "company": "Eli Lilly China",
                     "title": "IT Manager - Business Integration",
                     "description": "<ul><li>Major applications include: ERP, CRM, BI/DW, T&amp;E, SharePoint, eApproval, HR systems, Product websites, and SMS/MMS platform.</li><li>Major projects include: iPad rollout to ~4000 sales with interactive detailing and sales automation applications, Digital Marketing/Multi-channel, Sales Call Center, Veeva CRM, Sales FORECAST, and Distributor Data Integration Reporting.</li><li>Lead the team working on AstraZeneca Global/Regional initiatives, e.g. Global Travel &amps; Expense Management system, Global HR system, Global Digital Sales and Marketing capabilities.</li></ul>"
                 }, {
-                    "from": "2005/01",
-                    "to": "2008/01",
+                    "start": "2005/01",
+                    "end": "2008/01",
                     "company": "AstraZeneca China",
                     "title": "IS Application Manager",
                     "description": ""
                 }, {
-                    "from": "2001/05",
-                    "to": "2004/12",
+                    "start": "2001/05",
+                    "end": "2004/12",
                     "company": "General Electric",
                     "title": "Pacific IT Leader",
                     "description": ""
                 }, {
-                    "from": "1998/02",
-                    "to": "2001/04",
+                    "start": "1998/02",
+                    "end": "2001/04",
                     "company": "Ford Financial China",
                     "title": "System Analyst, Global Information Services",
                     "description": ""
