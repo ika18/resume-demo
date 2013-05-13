@@ -6,46 +6,47 @@ body {
 .page-container {
     overflow-y: scroll;
     position: relative;
+}
+.container-actions {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 24px;
+    font-weight: bold;
 
-    .container-actions {
-        position: absolute;
-        right: 20px;
-        top: 10px;
-        font-size: 24px;
-        font-weight: bold;
+    a,
+    a:hover {
+        text-decoration: none;
+        .size(22px, 22px);
+        text-align: center;
+        border: 2px solid #0088cc;
+        .border-radius(3px);
+        line-height: 18px;
+        .box-shadow(0 0 2px rgb(83, 165, 206, 0.6));
+    }
 
-        a,
-        a:hover {
-            text-decoration: none;
-            .size(22px, 22px);
-            text-align: center;
-            border: 2px solid #0088cc;
-            .border-radius(3px);
-            line-height: 18px;
-            .box-shadow(0 0 2px rgb(83, 165, 206, 0.6));
-        }
+    a:hover {
+        border-color: #005580;
+    }
 
-        a:hover {
-            border-color: #005580;
-        }
-
-        .maximize {
-            display: block;
-        }
-        .minimize {
-            display: none;
-        }
-
-        &.max {
-            .maximize {
-                display: none;
-            }
-            .minimize {
-                display: block;
-            }
-        }
+    .maximize {
+        display: block;
+    }
+    .minimize {
+        display: none;
     }
 }
+body.max {
+    overflow: scroll;
+
+    .maximize {
+        display: none;
+    }
+    .minimize {
+        display: block;
+    }
+}
+
 .page-outer {
     background-color: #fff;
     border: 1px solid #cacaca;
@@ -228,6 +229,7 @@ header {
     background: #ffffff;
     border-bottom: 1px solid #cacaca;
     overflow: hidden;
+    z-index: 1;
 
     .options {
         li {
@@ -256,6 +258,9 @@ footer {
     background: #ffffff;
     border-top: 1px solid #cacaca;
     overflow: hidden;
+    z-index: 1;
+    width: 100%;
+    bottom: 0;
 
     input[type="text"] {
         margin: 0;
