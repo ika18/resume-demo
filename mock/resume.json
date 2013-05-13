@@ -26,50 +26,53 @@
     "content": [
         {
             "type": "client information",
+            "title": "Client Information",
             "content": [
                 {
                     "type": "Name",
-                    "txt": "MSD China"
+                    "content": "MSD China"
                 },
                 {
                     "type": "Position",
-                    "txt": "IT Director of China Region"
+                    "content": "IT Director of China Region"
                 }
             ]
         }, {
             "type": "personal information",
+            "title": "Personal Information",
             "content": [
                 {
                     "type": "Name",
-                    "txt": "Andrew CHEN 陈一林"
+                    "content": "Andrew CHEN 陈一林"
                 },
                 {
                     "type": "Date of Birth",
-                    "txt": "1975/12"
+                    "content": "1975/12"
                 },
                 {
                     "type": "Gender",
-                    "txt": "Male"
+                    "content": "Male"
                 },
                 {
                     "type": "Nationality",
-                    "txt": "China"
+                    "content": "China"
                 },
                 {
                     "type": "Resides",
-                    "txt": "Shanghai"
+                    "content": "Shanghai"
                 },
                 {
                     "type": "Language",
-                    "txt": "Fluent English, Mandarin and Cantonese"
+                    "content": "Fluent English, Mandarin and Cantonese"
                 },
                 {
                     "type": "Marriage Status",
-                    "txt": "Married"
+                    "content": "Married"
                 }
             ]
         }, {
             "type": "education",
+            "title": "Education",
             "content": [
                 {
                     "from": "1995/09",
@@ -80,17 +83,21 @@
             ]
         }, {
             "type": "training",
+            "title": "Training",
             "content": "<p>2004/8 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;\"Six Sigma\" Green Belt Training</p>"
         }, {
             "type": "certificates",
+            "title": "Certificates",
             "content": "<ul><li>Project Management Professional (PMP)</li><li>Certified Information System Auditor (CISA)</li><li>Six Sigma (Green Belt)</li></ul>"
         }, {
             "type": "page break"    
         }, {
             "type": "evaluation comments",
+            "title": "Evaluation & Comments",
             "content": "<ul><li>10+ years experience in IT area. 10 years experience as IS manager/leader in Top 500 Companies</li><li>Develop organization and empower people</li><li>Experience in leading partners/vendors in China and Asia Pac</li><li>Responsible for ~30M RMB budget and spend in IS projects and operations annually</li><li>Experience in Sales & Marketing, Ecommerce, ERP and Finance, HR, Purchasing IS solutions and innovations</li></ul>"
         }, {
             "type": "employment history",
+            "title": "Employment History",
             "content": [
                 {
                     "from": "2008/02",
@@ -116,6 +123,7 @@
             ]
         }, {
             "type": "professional experience",
+            "title": "Professional Experience",
             "content": [
                 {
                     "from": "2008/02",
@@ -145,18 +153,21 @@
             ]
         }, {
             "type": "compensation",
+            "title": "Compensation",
             "content": [{
                 "type": "current",
-                "txt": "Base Salary: RMB XX per month guaranteed by XX months. Plus other standard MNC social benefit."
+                "content": "Base Salary: RMB XX per month guaranteed by XX months. Plus other standard MNC social benefit."
             }, {
                 "type": "expectation",
-                "txt": "To be discussed."
+                "content": "To be discussed."
             }]
         }, {
             "type": "motivation",
+            "title": "Motivation",
             "content": "<ul><li>Seek for opportunity in new area</li></ul>"
         }, {
             "type": "availability",
+            "title": "Availability",
             "content": "<ul><li>4 weeks after confirmation on Offer Letter</li><ul>"
         }
     ]
