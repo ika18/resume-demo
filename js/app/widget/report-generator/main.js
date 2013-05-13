@@ -12,6 +12,11 @@ define(['jquery',
     function setPageContainerHeight() {
         var me = this;
 
+
+        if (me.$element.hasClass('max')) {
+            return;
+        }
+
         headerHeight = me.$header.height();
         footerHeight = me.$footer.height();
         winHeight = $(window).height();
@@ -224,7 +229,6 @@ define(['jquery',
             $e.preventDefault();
 
             var me = this;
-            me.$containerActions.addClass('max');
 
             me.$footer.animate({
                 height: 'toggle'
@@ -236,25 +240,32 @@ define(['jquery',
 
 
             me.$pageContainer.animate({
-                height: '+=' + (headerHeight + footerHeight)
+                height: winHeight
+            }, function () {
+                me.$element.addClass('max');
+                me.$pageContainer.css('height', 'auto');
             });
         },
         'dom/action/container/minimize.click': function (topic, $e) {
             $e.preventDefault();
             
             var me = this;
-            me.$containerActions.removeClass('max');
+            
 
-            me.$footer.animate({
+            me.$footer.css({
+                'position': 'fixed',
+                'bottom': 0
+            })
+
+            .animate({
                 height: 'toggle'
             });
 
             me.$header.animate({
                 height: 'toggle'
-            });
-
-            me.$pageContainer.animate({
-                height: '-=' + (headerHeight + footerHeight)
+            }, function () {
+                me.$element.removeClass('max');
+                setPageContainerHeight.call(me);
             });
         }
     });
