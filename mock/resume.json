@@ -75,8 +75,8 @@
             "title": "Education",
             "content": [
                 {
-                    "from": "1995/09",
-                    "to": "1999/07",
+                    "start": "1995/09",
+                    "end": "1999/07",
                     "school": "Shanghai Jiao Tong University",
                     "specialized": "Bachelor degree with major in Business and Finance English"
                 }

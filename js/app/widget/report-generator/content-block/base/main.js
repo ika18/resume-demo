@@ -18,9 +18,7 @@ define(['jquery',
 
     var REDACTOR_OPT = { 
         focus: true,
-        air: true,
-        buttons: ['bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|', 'table', 'link', '|', 'alignment'],
-        airButtons: ['bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|', 'table', 'link', '|', 'alignment']
+        buttons: ['unorderedlist', 'orderedlist', 'outdent', 'indent'],
     };
 
     // Updated experience

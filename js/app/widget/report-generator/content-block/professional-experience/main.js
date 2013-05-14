@@ -14,8 +14,8 @@ define(['compose',
         me.$items.find('.item').each(function () {
             var $me = $(this);
             newContent.push({
-                'from': $me.find('.from').text(),
-                'to': $me.find('.to').text(),
+                'start': $me.find('.from').text(),
+                'end': $me.find('.to').text(),
                 'company': $me.find('.company').text(),
                 'title': $me.find('.title').text(),
                 'description': $me.find('.description').html().trim()
