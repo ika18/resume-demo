@@ -5,7 +5,9 @@ define(['jquery',
     function render() {
         var me = this;
 
-        me.html(template, {});
+        me.html(template, {}).then(function () {
+            me.$element.addClass('page-break');
+        });
     }
 
     return Widget.extend(function () {

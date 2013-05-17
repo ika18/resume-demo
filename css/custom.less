@@ -263,6 +263,27 @@ footer {
     position: relative;
     font-size: 11px
 }
+
+.page-content .page-break {
+    font-style: italic;
+    color: #ddd;
+    border-top: 1px dashed #ddd;
+    padding: 0;
+    margin: 20px 0;
+    position: relative;
+
+    &:after {
+        content: 'Page Break';
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .atcion-btns {
+        top: 0;
+    }
+}
+
 .page-start,
 .page-end {
     position: absolute;

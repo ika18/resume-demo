@@ -130,6 +130,7 @@ define(['jquery',
             type: 'get'
         }).spread(function (res) {
             window._json = me._json = res;
+            me._originJson = $.extend(true, {}, res);
             me.html(template, me._json).then(function () {
                 onRendered.call(me);
             });
@@ -166,14 +167,9 @@ define(['jquery',
             update: function (e, ui) {
                 var $item = ui.item;
                 var type = $item.attr('data-type');
-                var deferred = tDeferred();
                 var content = $.extend(true, [], me._originJson.content);
                 var json = {};
                 var weave;
-
-                deferred.done(function () {
-                    order.call(me, content);
-                });
 
                 if (type) {
                     if (type !== 'page-break') {
@@ -187,7 +183,9 @@ define(['jquery',
                     }
                     weave = 'app/widget/report-generator/content-block/' + type + '/main(json)';
                     $item.data('json', json)
-                        .attr('data-weave', weave).weave(deferred);
+                        .attr('data-weave', weave).weave().then(function () {
+                            order.call(me, content);
+                        });
                 } else {
                     order.call(me, content);
                 }
