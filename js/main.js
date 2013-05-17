@@ -26,7 +26,8 @@ require(['require',
 
     require(["troopjs-browser/application/widget",
         "troopjs-browser/route/widget",
-        "troopjs-browser/ajax/service"], function (Application, RouteWidget, ajax) {
+        "troopjs-browser/ajax/service",
+        "troopjs-jquery/action"], function (Application, RouteWidget, ajax) {
 
         $(function () {
             var $WINDOW = $(window);

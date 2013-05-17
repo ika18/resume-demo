@@ -231,7 +231,7 @@ define(['jquery',
             me._json.content = newContent;
         },
         'dom/action.click.keyup.focusout': $.noop,
-        'dom/action/editable.click': function (topic, $e) {
+        'dom/action/editable.click': function ($e) {
             var me = this;
             var $target = $($e.target);
             var $view = $target.find('.view');
@@ -240,21 +240,21 @@ define(['jquery',
             $view.addClass('hide');
             $input.focus().val($view.html());
         },
-        'dom/action/change/value.keyup': function (topic, $e, key) {
+        'dom/action/change/value.keyup': function ($e, key) {
             if ($e.originalEvent.keyCode === 13) {
                 changeValue.call(this, $e, key);
             }
         },
-        'dom/action/change/value.focusout': function (topic, $e, key) {
+        'dom/action/change/value.focusout': function ($e, key) {
             changeValue.call(this, $e, key);
         },
-        'dom/action/save.click': function (topic, $e) {
+        'dom/action/save.click': function ($e) {
             console.log(this._json.content);
         },
-        'dom/action/export/pdf.click': function (topic, $e) {
+        'dom/action/export/pdf.click': function ($e) {
             window.print();
         },
-        'dom/action/container/maximize.click': function (topic, $e) {
+        'dom/action/container/maximize.click': function ($e) {
             $e.preventDefault();
 
             var me = this;
@@ -275,7 +275,7 @@ define(['jquery',
                 me.$pageContainer.css('height', 'auto');
             });
         },
-        'dom/action/container/minimize.click': function (topic, $e) {
+        'dom/action/container/minimize.click': function ($e) {
             $e.preventDefault();
             
             var me = this;
