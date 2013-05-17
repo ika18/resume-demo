@@ -23,6 +23,84 @@ define(['jquery',
         me.$pageContainer.height(winHeight - headerHeight - footerHeight);
     }
 
+    function setPageContainerHeight() {
+        var me = this;
+
+
+        if (me.$element.hasClass('max')) {
+            return;
+        }
+
+        headerHeight = me.$header.height();
+        footerHeight = me.$footer.height();
+        winHeight = $(window).height();
+
+        me.$pageContainer.height(winHeight - headerHeight - footerHeight);
+    }
+
+    function initialContent() {
+        var me = this;
+        var content = me._json.content;
+        var i = 0;
+        var l = content.length;
+        var weave;
+        var $li;
+        var type;
+
+        for (i; i < l; i++) {
+            type = content[i].type.replace(' ', '-').toLowerCase();
+            weave = 'app/widget/report-generator/content-block/' + type + '/main(json)';
+
+            $li = $('<li></li>').data('json', content[i])
+                .attr('data-weave', weave);
+
+            me.$sortable.append($li);
+            $li.weave();
+        }
+    }
+
+    function changeValue($e, key) {
+        var me = this;
+        var $target = $($e.target);
+        var $root = $target.closest('[data-action="editable"]');
+        var $view = $root .find('.view');
+        var val = $target.val().trim();
+
+        $view.html(val);
+
+        $view.removeClass('hide');
+        $root.find('.edit').addClass('hide');
+
+        me._json[key] = val;
+    }
+
+    function order(content) {
+        var me = this;
+        var $contentBlock = me.$sortable.find('.content-block');
+        var originContent = content;
+        var currentContent = [];
+        var type;
+        var item;
+
+
+
+        $contentBlock.each(function () {
+            type = $(this).attr('data-type').replace('-', ' ');
+
+            if (type === 'page break') {
+                item = {type: 'page break'};
+            } else {
+                item = originContent.filter(function (obj) {
+                    return obj.type === type;
+                })[0];
+            }
+
+            currentContent.push(item);
+        });
+
+        me._json.content = currentContent;
+    }
+
     function initialContent() {
         var me = this;
         var content = me._json.content;
@@ -69,6 +147,65 @@ define(['jquery',
         me.$containerActions = me.$element.find('.container-actions');
 
         initialContent.call(me);
+
+        // Sort content block
+        me.$sortable.sortable({
+            cursor: "move",
+            placeholder: "sortable-placeholder",
+            containment: me.$element.find('.page-inner'),
+            // forcePlaceholderSize: true,
+            handle: 'h2',
+            axis: "y",
+            revert: true,
+            start: function (e, ui) {
+                ui.item.addClass('moving');
+            },
+            stop: function (e, ui) {
+                ui.item.removeClass('moving');
+            },
+            update: function (e, ui) {
+                var $item = ui.item;
+                var type = $item.attr('data-type');
+                var deferred = tDeferred();
+                var content = $.extend(true, [], me._originJson.content);
+                var json = {};
+                var weave;
+
+                deferred.done(function () {
+                    order.call(me, content);
+                });
+
+                if (type) {
+                    if (type !== 'page-break') {
+                        json = (function () {
+                            var items = content.filter(function (obj) {
+                                return obj.type === type.replace('-', ' ');
+                            });
+
+                            return items[0];
+                        }());
+                    }
+                    weave = 'app/widget/report-generator/content-block/' + type + '/main(json)';
+                    $item.data('json', json)
+                        .attr('data-weave', weave).weave(deferred);
+                } else {
+                    order.call(me, content);
+                }
+            }
+        });
+
+        // Add content block 
+        $('.options li').draggable({
+            connectToSortable: ".sortable-container",
+            helper: 'clone',
+            revert: "invalid",
+        });
+
+        setPageContainerHeight.call(me);
+
+        $(window).resize(function () {
+            setPageContainerHeight.call(me);
+        });
 
     }
 
