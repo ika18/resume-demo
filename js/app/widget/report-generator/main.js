@@ -7,19 +7,19 @@ define(['jquery',
     function render() {
         var me = this;
 
-        return me.request = me.publish('ajax', {
+        return me.publish('ajax', {
             url: 'mock/resume.json',
             type: 'get'
-        });
+        }).spread(function (res) {
+            console.log(res);
+            return;
+        });;
     }
 
     function onRendered() {
         var me = this;
 
-        me.request.spread(function (res) {
-            console.log(res);
-            console.log('onRendered');
-        });
+        console.log('onRendered');
     }
 
     return Widget.extend({
