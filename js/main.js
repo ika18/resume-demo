@@ -1,6 +1,6 @@
 require.config({
     paths: {
-        'troopjs-bundle': 'lib/troopjs/1.0.9-2/troopjs-bundle',
+        'troopjs-bundle': 'lib/troopjs/2.0.0-88/maxi',
         'jquery': 'lib/jquery-1.7.2.min',
         'jquery.ui': 'lib/jqueryui/jquery-ui.min',
         'redactor': 'lib/redactor/8.2.6/redactor'
@@ -22,14 +22,23 @@ require(['require',
     'troopjs-bundle'], function (require, $) {
     'use strict';
 
-    require(["app/widget/application",
-        "troopjs-jquery/weave",
-        "troopjs-jquery/destroy",
-        "troopjs-jquery/hashchange",
-        "troopjs-jquery/action"], function (Application) {
 
-        $(document).ready(function () {
-            Application($(this), "demo").start();
+
+    require(["troopjs-browser/application/widget",
+        "troopjs-browser/route/widget",
+        "troopjs-browser/ajax/service"], function (Application, RouteWidget, ajax) {
+
+        $(function () {
+            var $WINDOW = $(window);
+            var $HTML = $("html");
+
+            Application($HTML, "bootstrap", RouteWidget($WINDOW, "route"), ajax()).start()
+                .then(function onFulfilled() {
+                }, function onRejected() {
+                    console.warn(arguments);
+                }, function onProgress() {
+                    console.info(arguments);
+                });
         });
 
     });

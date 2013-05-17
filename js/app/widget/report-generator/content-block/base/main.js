@@ -1,5 +1,5 @@
 define(['jquery',
-    'troopjs-core/component/widget',
+    'troopjs-browser/component/widget',
     'troopjs-utils/deferred',
     'template!app/widget/report-generator/fields/pair.html',
     'template!app/widget/report-generator/fields/list.html',
