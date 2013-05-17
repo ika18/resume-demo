@@ -6,7 +6,7 @@ define(['jquery',
     function render() {
         var me = this;
 
-        me.html(template, {});
+        me.html(template, me._json);
     }
 
     return Widget.extend(function () {
@@ -19,7 +19,7 @@ define(['jquery',
             var me = this;
             var $tbody = me.$element.find('tbody');
 
-            $tbody.html(rowTemplate(data));
+            $tbody.html(rowTemplate(data.content));
         }
     });
 });

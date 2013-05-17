@@ -1,10 +1,9 @@
 define(['jquery',
     'troopjs-browser/component/widget',
     'template!app/widget/report-generator/fields/pair.html',
-    'template!app/widget/report-generator/fields/list.html',
     'template!app/widget/report-generator/fields/experience.html',
     'template!app/widget/report-generator/fields/education.html',
-    'redactor'], function ($, Widget, pairTemplate, listTemplate, expTemplate, eduTemplate) {
+    'redactor'], function ($, Widget, pairTemplate, expTemplate, eduTemplate) {
     'use strict';
     var HUB_DISABLE_DRAGGABLE = 'report-generator/disable/draggable';
     var HUB_ENABLE_DRAGGABLE = 'report-generator/enable/draggable';
@@ -12,28 +11,35 @@ define(['jquery',
 
     var FIELDS = {
         pair: pairTemplate(),
-        list: listTemplate(),
         exp: expTemplate(),
         education: eduTemplate()
     };
 
     var REDACTOR_OPT = { 
         focus: true,
-        buttons: ['bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|', 'table', 'link', '|', 'alignment'],
+        buttons: ['unorderedlist', 'orderedlist', 'outdent', 'indent']
     };
 
+    // Updated experience
     function updateData(index, key, value) {
         var me = this;
 
-        if (!me._json[index]) {
-            me._json[index] = {};
+        if (!me._json.content[index]) {
+            me._json.content[index] = {};
         }
 
         if (key) {
-            me._json[index][key] = value;
+            me._json.content[index][key] = value;
         } else {
-            me._json[index] = value;
+            me._json.content[index] = value;
         }
+    }
+
+    // Update other type's content
+    function updateData2(value) {
+        var me = this;
+
+        me._json.content = value;
     }
 
     function changeValue($e, key) {
@@ -63,7 +69,9 @@ define(['jquery',
         'sig/initialize': function () {
             var me = this;
 
-            me.publish(HUB_DISABLE_DRAGGABLE, me._type);
+            if (me._type !== 'page-break') {
+                me.publish(HUB_DISABLE_DRAGGABLE, me._type);
+            }
         },
         'sig/start': function () {
             var me = this;
@@ -76,7 +84,6 @@ define(['jquery',
                     return $root.find('.item-container');
                 }
             }());
-            
         },
         'sig/finalize': function () {
             var me = this;
@@ -107,12 +114,12 @@ define(['jquery',
 
             if (confirm) {
                 // remove this item in array
-                me._json.splice(index, 1);
+                me._json.content.splice(index, 1);
 
                 $target.closest('.item').remove();
 
                 if (me.afterOperation) {
-                    me.afterOperation(topic);
+                    me.afterOperation();
                 }
             }
             
@@ -141,7 +148,7 @@ define(['jquery',
                 changeValue.call(me, $e, key);
 
                 if (me.afterOperation) {
-                    me.afterOperation(topic);
+                    me.afterOperation();
                 }
             }
         },
@@ -151,7 +158,7 @@ define(['jquery',
             changeValue.call(me, $e, key);
 
             if (me.afterOperation) {
-                me.afterOperation(topic);
+                me.afterOperation();
             }
         },
         'dom/action/redactor/edit.click': function ($e) {
@@ -163,18 +170,25 @@ define(['jquery',
         },
         'dom/action/redactor/save.click': function ($e) {
             $e.preventDefault();
+            
             var me = this;
             var $target = $($e.target);
-            var $items = me.$container.find('.item');
-            var $thisItem = $target.closest('.item');
-            var index = $items.index($thisItem);
             var $area = $target.closest('.redactor-area').removeClass('editing');
             var $content = $area.removeClass('editing').find('.redactor-content')
+            var $items = me.$container.find('.item');
+            // Get content's html
             var html = $content.getCode(); 
 
-            $content.destroyEditor();
+            if ($items.length) {
+                var $thisItem = $target.closest('.item');
+                var index = $items.index($thisItem);
+                updateData.call(me, index, 'description', html);
+            } else {
+                updateData2.call(me, html);
+            }
 
-            updateData.call(me, index, 'description', html);
+            // Destroy editor
+            $content.destroyEditor();
         }
     });
 });

@@ -1,3 +1,26 @@
+<%
+var header = data.header;
+var footer = data.footer;
+
+function infoOutput(data) {
+    var val = '';
+
+    if (!data) {
+        return val;
+    }
+    
+    switch (data.type) {
+        case 'txt':
+            val = data.content;
+            break;
+        case 'img':
+            val = '<img src="' + data.content + '"/>';
+            break;
+    }
+
+    return val;
+}
+%>
 <header>
     <div class="container-fluid">
         <ul class="inline options">
@@ -13,39 +36,58 @@
             <li data-type="motivation">Motivation</li>
             <li data-type="availability">Availability</li>
         </ul>
+        <ul class="inline options">
+            <li data-type="page-break">Page break</li>
+        </ul>
     </div>
 </header>
 
-<div class="page-outer">
-    <div class="page-inner">
-        <div class="page-print-block">
-            <div class="page-start clearfix">
-                <span id="top-left">Candidate Report – Strictly Confidential</span>
-                <span id="top-center">Center</span>
-                <span id="top-right">Right</span>
+<div class="page-container">
+    <div class="container-actions">
+        <a href="#" data-action="container/maximize" class="maximize">+</a>
+        <a href="#" data-action="container/minimize" class="minimize">-</a>
+    </div>
+    <div class="page-outer">
+        <div class="page-inner">
+            <div class="page-print-block">
+                <table class="page-start">
+                    <tr>
+                        <td class="left"><%= infoOutput(header.left) %></td>
+                        <td class="center"><%= infoOutput(header.center) %></td>
+                        <td class="right"><%= infoOutput(header.right) %></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="page-content">
+                <h1 class="text-center" data-action="editable">
+                    <span class="view"><%= data.title %></span>
+                    <span class="edit hide">
+                        <input type="text" data-action="change/value('title')">
+                    </span>
+                </h1>
+
+                <ul class="unstyled sortable-container">
+                </ul>
+
+            </div>
+
+            <div class="page-print-block">
+                <table class="page-end">
+                    <tr>
+                        <td class="left"><%= infoOutput(footer.left) %></td>
+                        <td class="center"><%= infoOutput(footer.center) %></td>
+                        <td class="right"><%= infoOutput(footer.right) %></td>
+                    </tr>
+                </table>
             </div>
         </div>
-
-        <div class="page-content">
-            <h1 class="text-center" data-action="editable">
-                <span class="view"><%= data.title %></span>
-                <span class="edit hide">
-                    <input type="text" data-action="change/value('title')">
-                </span>
-            </h1>
-
-            <ul class="unstyled sortable-container">
-            </ul>
-
-        </div>
-
-        <div class="page-print-block"></div>
     </div>
 </div>
 
 <footer>
     <div class="container-fluid text-right">
-        <input type="text" value="<%= data.filename %>" data-action="change/value('filename')" class="input-large">
+        <input type="text" value="<%= data.filename %>" data-action="change/value('filename')" class="span7">
         <div class="btn-toolbar">
             <div class="btn-group">
                 <button class="btn btn-primary" data-action="save">Save</button>

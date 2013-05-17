@@ -4,6 +4,25 @@ define(['jquery',
     'jquery.ui'], function ($, Widget, template) {
     'use strict';
 
+    var winHeight;
+    var headerHeight;
+    var footerHeight;
+
+    function setPageContainerHeight() {
+        var me = this;
+
+
+        if (me.$element.hasClass('max')) {
+            return;
+        }
+
+        headerHeight = me.$header.height();
+        footerHeight = me.$footer.height();
+        winHeight = $(window).height();
+
+        me.$pageContainer.height(winHeight - headerHeight - footerHeight);
+    }
+
     function initialContent() {
         var me = this;
         var content = me._json.content;
@@ -32,14 +51,13 @@ define(['jquery',
             url: 'mock/resume.json',
             type: 'get'
         }).spread(function (res) {
-            me._json = res;
+            window._json = me._json = res;
             me.html(template, me._json).then(function () {
                 onRendered.call(me);
             });
         });
     }
 
-    // On rendered
     function onRendered() {
         var me = this;
 
@@ -52,7 +70,6 @@ define(['jquery',
 
         initialContent.call(me);
 
-        me.publish('test', 'hello');
     }
 
     return Widget.extend({
@@ -70,7 +87,6 @@ define(['jquery',
             if (type) {
                 me.$options.find('[data-type="' + type + '"]').removeClass('disabled').draggable('enable');
             }
-            
         },
         'hub/report-generator/remove/content/block': function (type) {
             var me = this;
@@ -79,5 +95,72 @@ define(['jquery',
             });
             me._json.content = newContent;
         },
+        'dom/action.click.keyup.focusout': $.noop,
+        'dom/action/editable.click': function (topic, $e) {
+            var me = this;
+            var $target = $($e.target);
+            var $view = $target.find('.view');
+            var $input = $target.find('.edit').removeClass('hide').find('input');
+
+            $view.addClass('hide');
+            $input.focus().val($view.html());
+        },
+        'dom/action/change/value.keyup': function (topic, $e, key) {
+            if ($e.originalEvent.keyCode === 13) {
+                changeValue.call(this, $e, key);
+            }
+        },
+        'dom/action/change/value.focusout': function (topic, $e, key) {
+            changeValue.call(this, $e, key);
+        },
+        'dom/action/save.click': function (topic, $e) {
+            console.log(this._json.content);
+        },
+        'dom/action/export/pdf.click': function (topic, $e) {
+            window.print();
+        },
+        'dom/action/container/maximize.click': function (topic, $e) {
+            $e.preventDefault();
+
+            var me = this;
+
+            me.$footer.animate({
+                height: 'toggle'
+            });
+
+            me.$header.animate({
+                height: 'toggle'
+            });
+
+
+            me.$pageContainer.animate({
+                height: winHeight
+            }, function () {
+                me.$element.addClass('max');
+                me.$pageContainer.css('height', 'auto');
+            });
+        },
+        'dom/action/container/minimize.click': function (topic, $e) {
+            $e.preventDefault();
+            
+            var me = this;
+            
+
+            me.$footer.css({
+                'position': 'fixed',
+                'bottom': 0
+            })
+
+            .animate({
+                height: 'toggle'
+            });
+
+            me.$header.animate({
+                height: 'toggle'
+            }, function () {
+                me.$element.removeClass('max');
+                setPageContainerHeight.call(me);
+            });
+        }
     });
 });

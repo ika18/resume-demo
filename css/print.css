@@ -1,20 +1,30 @@
+body {
+    overflow: inherit;
+}
 header,
 footer {
     display: none;
 }
-
+.container-actions {
+    display: none !important;
+}
+.page-container {
+    height: auto !important;
+}
 .page-outer {
     border: none;
     .box-shadow(none);
     margin: 0;
 }
-
+.page-content {
+    padding: 0 96px 0 96px;
+}
 .page-content section:hover .atcion-btns {
     display: none;
 }
 
 .page-content [data-action="editable"] {
-        border-bottom: 0 none;
+    border-bottom: 0 none;
 }
 
 .page-content .content-block:hover .atcion-btns {
@@ -32,9 +42,6 @@ footer {
     display: none;
 }
 @page {
-    margin-top: 96px;
-    margin-bottom: 96px;
-
     @top-left {
         content: element(topLeft);
     }
@@ -48,11 +55,16 @@ footer {
     }
 }
 
-.page-break {
+.page-content .page-break {
     border: none;
     page-break-after: always;
+    margin: 0;
+    display: block;
+    clear: both;
+    padding: 0;
+    border-top: 0 none;
 }
-.page-break:after {
+.page-content .page-break:after {
     display: none;
 }
 
