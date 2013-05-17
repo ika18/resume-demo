@@ -1,3 +1,6 @@
+<%
+var content = data.content;
+%>
 <div class="content-block item-container" data-type="certificates">
     <div class="clearfix atcion-btns">
         <button class="btn btn-small btn-danger pull-right" data-action="block/remove">Remove</button>
@@ -5,8 +8,8 @@
     </div>
     <h2>CERTIFICATES:</h2>
 
-    <% for (var i = 0, l = data.length; i < l; i++) { %>
-    <% var d = data[i]; %>
+    <% for (var i = 0, l = content.length; i < l; i++) { %>
+    <% var d = content[i]; %>
     <div class="row item row-list">
         <div class="span8" data-action="editable">
             <a href="#" data-action="item/remove" class="remove"><span class="icon-remove"></span></a>

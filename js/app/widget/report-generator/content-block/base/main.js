@@ -1,11 +1,10 @@
 define(['jquery',
     'troopjs-browser/component/widget',
-    'troopjs-utils/deferred',
     'template!app/widget/report-generator/fields/pair.html',
     'template!app/widget/report-generator/fields/list.html',
     'template!app/widget/report-generator/fields/experience.html',
     'template!app/widget/report-generator/fields/education.html',
-    'redactor'], function ($, Widget, tDeferred, pairTemplate, listTemplate, expTemplate, eduTemplate) {
+    'redactor'], function ($, Widget, pairTemplate, listTemplate, expTemplate, eduTemplate) {
     'use strict';
     var HUB_DISABLE_DRAGGABLE = 'report-generator/disable/draggable';
     var HUB_ENABLE_DRAGGABLE = 'report-generator/enable/draggable';
@@ -20,9 +19,7 @@ define(['jquery',
 
     var REDACTOR_OPT = { 
         focus: true,
-        air: true,
         buttons: ['bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|', 'table', 'link', '|', 'alignment'],
-        airButtons: ['bold', 'italic', 'deleted', '|', 'unorderedlist', 'orderedlist', 'outdent', 'indent', '|', 'table', 'link', '|', 'alignment']
     };
 
     function updateData(index, key, value) {
@@ -63,13 +60,12 @@ define(['jquery',
         me._json = json;
         me._type = null;
     }, {
-        'sig/initialize': function (signal, deferred) {
+        'sig/initialize': function () {
             var me = this;
 
             me.publish(HUB_DISABLE_DRAGGABLE, me._type);
-            deferred.resolve();
         },
-        'sig/start': function (signal, deferred) {
+        'sig/start': function () {
             var me = this;
 
             me.$container = (function () {
@@ -81,17 +77,15 @@ define(['jquery',
                 }
             }());
             
-            deferred.resolve();
         },
-        'sig/finalize': function (signal, deferred) {
+        'sig/finalize': function () {
             var me = this;
 
             me.publish(HUB_ENABLE_DRAGGABLE, me._type);
             me.publish(HUB_REMOVE_CONTENT, me._type.replace('-', ' '));
-            deferred.resolve();
         },
         "dom/action.click.keyup.focusout": $.noop,
-        "dom/action/block/remove.click": function (topic, $e) {
+        "dom/action/block/remove.click": function ($e) {
             $e.preventDefault();
             var me = this;
             var confirm = window.confirm('Do you really want to delete this block?');
@@ -101,7 +95,7 @@ define(['jquery',
             }
             
         },
-        "dom/action/item/remove.click": function (topic, $e) {
+        "dom/action/item/remove.click": function ($e) {
             $e.preventDefault();
             var me = this;
             var $target = $($e.target);
@@ -123,14 +117,14 @@ define(['jquery',
             }
             
         },
-        'dom/action/item/add.click': function (topic, $e, type) {
+        'dom/action/item/add.click': function ($e, type) {
             $e.preventDefault();
             var me = this;
             var $target = $($e.target);
 
             me.$container.append(FIELDS[type]);
         },
-        'dom/action/editable.click': function (topic, $e) {
+        'dom/action/editable.click': function ($e) {
             var me = this;
             var $target = $($e.target);
             var $view = $target.find('.view');
@@ -139,7 +133,7 @@ define(['jquery',
             $view.addClass('hide');
             $input.focus().val($view.html());
         },
-        'dom/action/change/value.keyup': function (topic, $e, key) {
+        'dom/action/change/value.keyup': function ($e, key) {
             $e.stopPropagation();
             var me = this;
 
@@ -151,7 +145,7 @@ define(['jquery',
                 }
             }
         },
-        'dom/action/change/value.focusout': function (topic, $e, key) {
+        'dom/action/change/value.focusout': function ($e, key) {
             $e.stopPropagation();
             var me = this;
             changeValue.call(me, $e, key);
@@ -160,14 +154,14 @@ define(['jquery',
                 me.afterOperation(topic);
             }
         },
-        'dom/action/redactor/edit.click': function (topic, $e) {
+        'dom/action/redactor/edit.click': function ($e) {
             $e.preventDefault();
             var me = this;
             var $target = $($e.target);
 
             $target.closest('.redactor-area').addClass('editing').find('.redactor-content').redactor(REDACTOR_OPT);
         },
-        'dom/action/redactor/save.click': function (topic, $e) {
+        'dom/action/redactor/save.click': function ($e) {
             $e.preventDefault();
             var me = this;
             var $target = $($e.target);
